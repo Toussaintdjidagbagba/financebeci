@@ -9,8 +9,8 @@ use App\Models\Incident;
 class InterfaceServiceProvider extends ServiceProvider
 {
 
-    public static function allcategorie(){
-        return DB::table('categorieoutils')->get();
+    public static function alldirections(){
+        return DB::table('services')->where('structure', "DIRECTION")->get();
     }
 
     public static function allutilisateurs(){
@@ -21,44 +21,19 @@ class InterfaceServiceProvider extends ServiceProvider
         return DB::table('utilisateurs')->where('Role', 2)->orwhere('Role', 1)->get();
     }
 
+    public static function allutilisateurspersonnel(){
+        return DB::table('utilisateurs')->where('Role', 1)->get();
+    }
+
     public static function getallperiode(){
         return DB::table('maintenances')->get();
     }
 
-    public static function getordinateur(){
-        return DB::table('outils')->select('outils.nameoutils as nameoutils', 'outils.id as id')->join("categorieoutils", "categorieoutils.id", "=", "outils.categorie")->where('categorieoutils.libelle', "Ordinateurs")->get();
-    }
-
-    public static function getUserOutil($id){
-        $ordinateur = DB::table('outils')->select('outils.user as user', 'outils.id as id')->join("categorieoutils", "categorieoutils.id", "=", "outils.categorie")->where('categorieoutils.libelle', "Ordinateurs")->where('outils.id', $id)->first();
-        if(isset($ordinateur->id)){
-            return InterfaceServiceProvider::LibelleUser($ordinateur->user);
-        }else{
-            return "";
-        }
-    }
-
-    public static function periodeMaintenance($id){
-        $maintenance = DB::table('maintenances')->where('id', $id)->first();
-
-        if (isset($maintenance->id)) {
-            return $maintenance->periodedebut.' au '.$maintenance->periodefin;
-        }else{
-            return '';
-        }
-    }
-
-    public static function getLibOutil($id){
-        $ordinateur = DB::table('outils')->select('outils.nameoutils as nameoutils', 'outils.id as id')->join("categorieoutils", "categorieoutils.id", "=", "outils.categorie")->where('categorieoutils.libelle', "Ordinateurs")->where('outils.id', $id)->first();
-        if(isset($ordinateur->id)){
-            return $ordinateur->nameoutils;
-        }else{
-            return "";
-        }
-    }
-
     public static function LibService($id){
-        return DB::table('services')->where('id', $id)->first()->libelle;
+        $service = DB::table('services')->where('id', $id)->first();
+        if(isset($service->libelle))
+            return $service->libelle;  
+        return "";   
     }
     
     public static function destinataire(){
@@ -93,15 +68,6 @@ class InterfaceServiceProvider extends ServiceProvider
             return "";
     }
 
-    public static function LibelleCategorie($id)
-    {
-        $libcat = DB::table('categorieoutils')->where('id', $id)->first();
-        if (isset($libcat->libelle))
-            return $libcat->libelle;
-        else
-            return "";
-    }
-
     public static function AllRole()
     {
         return DB::table('roles')->get();
@@ -117,31 +83,6 @@ class InterfaceServiceProvider extends ServiceProvider
         if($id == null)
             return "";
         return DB::table('services')->where('id', $id)->first()->libelle;
-    }
-
-    public static function AllCat()
-    {
-        return DB::table('categories')->get();
-    }
-
-    public static function LibelleCat($id)
-    {
-        return DB::table('categories')->where('id', $id)->first()->libelle;
-    }
-    
-    public static function TempsCat($id)
-    {
-        return DB::table('categories')->where('id', $id)->first()->tmpCat;
-    }
-
-    public static function AllHie()
-    {
-        return DB::table('hierarchies')->get();
-    }
-
-    public static function LibelleHier($id)
-    {
-        return DB::table('hierarchies')->where('id', $id)->first()->libelle;
     }
 
     public static function libmenu($id)

@@ -1,15 +1,15 @@
-@extends('templatedste._temp')
-@section('css')
+
+<?php $__env->startSection('css'); ?>
 
 <!-- Bootstrap Select Css -->
 <link href="cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
 <div class="container-fluid">
 	<div class="block-header">
-		@include('flash-message')
+		<?php echo $__env->make('flash-message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 		<h2>
 			Entreprises
 			<small></small>
@@ -27,16 +27,16 @@
 				<div class="body">
 					<div class="row">
 						
-						<form style="padding : 20px" method="post" action="{{ route('SSL') }}" >
-							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-							<input type="hidden" name="id" value="{{ $info->id }}" />
+						<form style="padding : 20px" method="post" action="<?php echo e(route('SSL')); ?>" >
+							<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+							<input type="hidden" name="id" value="<?php echo e($info->id); ?>" />
 							<div class="row clearfix">
 
 								<div class="col-sm-6">
 									<label for="libelle">Libelle : </label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" id="libelle" class="form-control" value="{{ $info->libelle }}" name="libelle" >
+											<input type="text" id="libelle" class="form-control" value="<?php echo e($info->libelle); ?>" name="libelle" >
 										</div>
 									</div>			
 								</div>
@@ -44,7 +44,7 @@
 									<label for="imma">Immatriculation : </label>
 									<div class="form-group">
 										<div class="form-line">
-											<input type="text" id="imma" class="form-control" value="{{ $info->imma }}" name="imma" >
+											<input type="text" id="imma" class="form-control" value="<?php echo e($info->imma); ?>" name="imma" >
 										</div>
 									</div>			
 								</div>
@@ -66,13 +66,13 @@
 			                       <div class="form-group">
 			                        <div class="form-line">
 			                            <select type="text" id="chef" name="chef" class="form-control" placeholder="">
-			                                @php 
+			                                <?php 
 			                                    $users = App\Providers\InterfaceServiceProvider::allutilisateurspersonnel();
-			                                @endphp 
-			                                <option value="{{ $info->chef }}">{{ App\Providers\InterfaceServiceProvider::LibelleUser($info->chef) }}</option>
-			                                @foreach($users as $user)
-			                                    <option value="{{$user->idUser}}">{{$user->nom}} {{$user->prenom}}</option>
-			                                @endforeach
+			                                ?> 
+			                                <option value="<?php echo e($info->chef); ?>"><?php echo e(App\Providers\InterfaceServiceProvider::LibelleUser($info->chef)); ?></option>
+			                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+			                                    <option value="<?php echo e($user->idUser); ?>"><?php echo e($user->nom); ?> <?php echo e($user->prenom); ?></option>
+			                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 			                            </select>
 			                        </div>
 			                       </div>
@@ -84,12 +84,12 @@
 		                           <div class="form-group">
 		                            <div class="form-line">
 		                                <select type="text" id="direct" name="direct" class="form-control" placeholder="">
-		                                    @php 
+		                                    <?php 
 		                                        $structure = App\Providers\InterfaceServiceProvider::alldirections();
-		                                    @endphp 
-		                                    @foreach($structure as $structurehierarchie)
-		                                        <option value="{{$structurehierarchie->id}}">{{$structurehierarchie->libelle}}</option>
-		                                    @endforeach
+		                                    ?> 
+		                                    <?php $__currentLoopData = $structure; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $structurehierarchie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+		                                        <option value="<?php echo e($structurehierarchie->id); ?>"><?php echo e($structurehierarchie->libelle); ?></option>
+		                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 		                                </select>
 		                            </div>
 		                           </div>
@@ -123,11 +123,12 @@
             }
         }
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("js")
+<?php $__env->startSection("js"); ?>
 <script>
 	$('#flash-overlay-modal').modal();
 	$('div.alert').not('.alert-important').delay(6000).fadeOut(350);
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('templatedste._temp', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\financebeci\resources\views/viewadmindste/service/modifservice.blade.php ENDPATH**/ ?>

@@ -38,7 +38,7 @@
 										<th data-priority="3">Prénom(s)</th>
 										<th data-priority="1">Téléphone</th>
 										<th data-priority="3">Profession</th>
-                                        <th data-priority="3">Service</th>
+                                        <th data-priority="3">Service/Direction</th>
 										<th data-priority="3">Rôle</th> 
 										<th data-priority="6">Actions</th>
 									</tr>
@@ -78,6 +78,7 @@
                                                 <?php endif; ?>
                                             <?php endif; ?>
 
+                                            <!--
                                             <?php if(in_array("status_user", session("auto_action"))): ?>
                                                 <?php if($user->activereceiveincident == 0): ?>
                                                 <button type="button" title="Voulez-vous désactivé l'utilisateur à recevoir les mails d'incident ?"  class="btn btn-primary btn-circle btn-xs  margin-bottom-10 waves-effect waves-light"><a href=" <?php echo e(route('DSUM', $user->idUser)); ?>" style="color:white;"> <i class="material-icons">contact_mail</i></a></button>
@@ -85,7 +86,7 @@
                                                 <?php if($user->activereceiveincident == 1): ?>
                                                 <button type="button" title="Voulez-vous activé l'utilisateur à recevoir les mails d'incident ?"  class="btn btn-primary btn-circle btn-xs  margin-bottom-10 waves-effect waves-light" style="background-color:grey"><a href="<?php echo e(route('ATUM', $user->idUser)); ?>" style="color:white;"> <i class="material-icons">mail_outline</i></a></button>
                                                 <?php endif; ?>
-                                            <?php endif; ?>
+                                            <?php endif; ?> -->
                                             
                                             </td>
                                         </tr>
@@ -224,7 +225,9 @@
                                     <?php
                                         $services = App\Providers\InterfaceServiceProvider::AllService();
                                     ?>
+
                                     <select type="text" id="autres" name="serv" class="form-control" placeholder="">
+                                        <option></option>
                                         <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($service->id); ?>"><?php echo e($service->libelle); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

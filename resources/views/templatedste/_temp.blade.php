@@ -248,6 +248,24 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <i class="large material-icons" style="color:#001e60">assessment</i>
+                                    <span>Prévisions</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="#">
+                                            <span>Encaissements</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span>Décaissments</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         </li>
 
                             <li>
@@ -260,20 +278,21 @@
                                 <a href="{{route('GS')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Directions/Services</span></a>
                             </li>
                             <li>
-                                <a href="{{route('GR')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Rôle</span></a>
+                                <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Ligne budgétaire</span></a>
                             </li>
                             <li>
-                                <a href="{{route('GM')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Menu</span></a>
+                                <a href="{{route('GR')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Rôles</span></a>
                             </li>
                             <li>
-                                <a href="{{route('GU')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Utilisateur</span></a>
+                                <a href="{{route('GM')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Menus</span></a>
+                            </li>
+                            <li>
+                                <a href="{{route('GU')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Utilisateurs</span></a>
                             </li>
                              <li>
-                                <a href="{{route('GU')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Niveau de validité</span></a>
+                                <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Niveau de validités</span></a>
                             </li>
-                            <li>
-                                <a href="{{route('GU')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Ligne budgetaire</span></a>
-                            </li>
+                            
                         </ul>
             </div>
             <!-- #Menu -->

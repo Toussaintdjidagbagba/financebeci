@@ -38,7 +38,7 @@
 										<th data-priority="3">Prénom(s)</th>
 										<th data-priority="1">Téléphone</th>
 										<th data-priority="3">Profession</th>
-                                        <th data-priority="3">Service</th>
+                                        <th data-priority="3">Service/Direction</th>
 										<th data-priority="3">Rôle</th> 
 										<th data-priority="6">Actions</th>
 									</tr>
@@ -78,6 +78,7 @@
                                                 @endif
                                             @endif
 
+                                            <!--
                                             @if(in_array("status_user", session("auto_action")))
                                                 @if($user->activereceiveincident == 0)
                                                 <button type="button" title="Voulez-vous désactivé l'utilisateur à recevoir les mails d'incident ?"  class="btn btn-primary btn-circle btn-xs  margin-bottom-10 waves-effect waves-light"><a href=" {{ route('DSUM', $user->idUser) }}" style="color:white;"> <i class="material-icons">contact_mail</i></a></button>
@@ -85,7 +86,7 @@
                                                 @if($user->activereceiveincident == 1)
                                                 <button type="button" title="Voulez-vous activé l'utilisateur à recevoir les mails d'incident ?"  class="btn btn-primary btn-circle btn-xs  margin-bottom-10 waves-effect waves-light" style="background-color:grey"><a href="{{ route('ATUM', $user->idUser)}}" style="color:white;"> <i class="material-icons">mail_outline</i></a></button>
                                                 @endif
-                                            @endif
+                                            @endif -->
                                             
                                             </td>
                                         </tr>
@@ -223,7 +224,9 @@
                                     @php
                                         $services = App\Providers\InterfaceServiceProvider::AllService();
                                     @endphp
+
                                     <select type="text" id="autres" name="serv" class="form-control" placeholder="">
+                                        <option></option>
                                         @foreach($services as $service)
                                             <option value="{{ $service->id }}">{{ $service->libelle }}</option>
                                         @endforeach

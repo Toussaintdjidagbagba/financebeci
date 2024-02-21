@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Liste des entreprises
+                                Liste des Services/Directions
                             
                             <button type="button" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#add">Ajouter</button>
                             </h2>
@@ -35,6 +35,9 @@
                                     <tr>
                                         <th data-priority="1">Libelle</th>
                                         <th data-priority="1">Immatriculation</th>
+                                        <th data-priority="1">Chef directeur</th>
+                                        <th data-priority="1">Structure</th>
+                                        <th data-priority="1">Hierarchie Direction</th>
                                         <th data-priority="6">Actions</th>
                                     </tr>
                                     </thead>
@@ -47,6 +50,18 @@
                                             </td>
                                             <td>
                                                 <?php echo e($serv->imma); ?>
+
+                                            </td>
+                                            <td>
+                                                <?php echo e(App\Providers\InterfaceServiceProvider::LibelleUser($serv->chef)); ?>
+
+                                            </td>
+                                            <td>
+                                                <?php echo e($serv->structure); ?>
+
+                                            </td>
+                                            <td>
+                                                <?php echo e(App\Providers\InterfaceServiceProvider::LibService($serv->hierarchiedirection)); ?>
 
                                             </td>
                                             <td>
@@ -87,14 +102,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Enregistrer un entreprise : </h4>
+                <h4 class="modal-title" id="myModalLabel">Enregistrer une Service / Direction : </h4>
             </div>
             <form method="post" action="<?php echo e(route('AS')); ?>">
             <div class="modal-body">
                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
                     <div class="row clearfix">
                         <div class="col-md-6">
-                            <label for="lib">Libelle : </label>
+                            <label for="lib">Libelle : </label> 
                            <div class="form-group">
                             <div class="form-line">
                                 <input type="text" id="lib" name="lib" class="form-control" placeholder="">
@@ -110,6 +125,51 @@
                            </div>
                         </div>
                     </div>
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <label for="struc">Structure : </label> 
+                           <div class="form-group">
+                            <div class="form-line">
+                                <select type="text" id="struc" name="struc" onchange="seedirection()" class="form-control" placeholder="">
+                                    <option>DIRECTION</option>
+                                    <option>SERVICE</option>
+                                </select>
+                            </div>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="chef">Chef : </label> 
+                           <div class="form-group">
+                            <div class="form-line">
+                                <select type="text" id="chef" name="chef" class="form-control" placeholder="">
+                                    <?php 
+                                        $users = App\Providers\InterfaceServiceProvider::allutilisateurspersonnel();
+                                    ?> 
+                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($user->idUser); ?>"><?php echo e($user->nom); ?> <?php echo e($user->prenom); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix" id="controledirect" style="display: none;">
+                        <div class="col-md-6">
+                            <label for="direct">Hieararchie direction : </label> 
+                           <div class="form-group">
+                            <div class="form-line">
+                                <select type="text" id="direct" name="direct" class="form-control" placeholder="">
+                                    <?php 
+                                        $structure = App\Providers\InterfaceServiceProvider::alldirections();
+                                    ?> 
+                                    <?php $__currentLoopData = $structure; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $structurehierarchie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($structurehierarchie->id); ?>"><?php echo e($structurehierarchie->libelle); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">FERMER</button>
@@ -119,6 +179,19 @@
         </div>
     </div>
     </div>
+
+    <script type="text/javascript">
+        function seedirection() {
+            structure = document.getElementById("struc").value;
+
+            if(structure == "SERVICE")
+            {
+                document.getElementById('controledirect').style.display = "block";
+            }else{
+                document.getElementById('controledirect').style.display = "none";
+            }
+        }
+    </script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('templatedste._temp', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\financebeci\resources\views/viewadmindste/service/listservice.blade.php ENDPATH**/ ?>

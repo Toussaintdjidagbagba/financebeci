@@ -17,7 +17,7 @@ class ServiceController extends Controller
     }
 
     public function addserv(Request $request)
-    {
+    { 
     	if (!in_array("add_service", session("auto_action"))) {
             return view("vendor.error.649");
         }else{
@@ -29,8 +29,15 @@ class ServiceController extends Controller
                 $add = new Services();
                 $add->libelle =  htmlspecialchars(trim($request->lib));
                 $add->imma =  htmlspecialchars(trim($request->imma));
+                $add->chef =  $request->chef;
+                $add->structure = $request->struc;
+                if($request->struc == "SERVICE")
+                    $add->hierarchieservice = $request->direct;    
                 $add->action = session("utilisateur")->idUser;
                 $add->save();
+
+                // Définition du statut du chef dans ces informations 
+                DB::table("utilisateurs")->where('idUser', $request->chef)->update(['Service' => $add->id]);
 
                 flash("Service est enregistrée avec succès. ")->success();
                 TraceController::setTrace("Vous avez enregistrée le service ".$request->lib." .",session("utilisateur")->idUser);
@@ -81,8 +88,16 @@ class ServiceController extends Controller
                     [
                         'libelle' =>  htmlspecialchars(trim($request->libelle)),
                         'imma' =>  htmlspecialchars(trim($request->imma)),
+                        'chef' =>  $request->chef,
+                        'structure' => $request->struc,
                         'action' => session("utilisateur")->idUser,
                     ]);
+            if($request->struc == "SERVICE")
+                Services::where('id', request('id'))->update(['hierarchieservice' => $request->direct]);    
+            
+            // Définition du statut du chef dans ces informations 
+            DB::table("utilisateurs")->where('idUser', $request->chef)->update(['Service' => request('id')]);
+
             flash($name." est modifiée avec succès. ")->success();
             TraceController::setTrace("Vous avez modifié le services ".$request->libelle." .", session("utilisateur")->idUser);
             return redirect('/listentreprise');
