@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes 
+| Web Routes
 | Dev :	MDP-DEST
 */
 
-Route::get('/cach',function () 
+Route::get('/cach',function ()
 {
     Artisan::call('Config:cache');
 });
@@ -25,13 +25,13 @@ Route::fallback(function() {
 });
 
 Route::group([
-    'middleware' => 'App\Http\Middleware\Autorisation' 
- 
+    'middleware' => 'App\Http\Middleware\Autorisation'
+
 ], function(){
-	
+
 	Route::get('/deconnexion', 'App\Http\Controllers\LoginController@logout')->name('logout');
 	Route::get('/aide', 'App\Http\Controllers\GestionnaireController@getaide')->name('MAD');
-	
+
 	Route::get('/apilogin', 'App\Http\Controllers\GestionnaireController@apilogin')->name('apiloginS');
 
 	///////////////////////////////////** Utilisateur **///////////////////////////////////////////////////////////////
@@ -56,7 +56,7 @@ Route::group([
 	Route::get('/menu-roles-{id}', 'App\Http\Controllers\RoleController@getmenurole')->name('MRR');
 	Route::post('/menu-roles', 'App\Http\Controllers\RoleController@setmenurole')->name('MenuAttr');
 	Route::post('/modif-roles', 'App\Http\Controllers\RoleController@modifrole')->name('SRL');
- 
+
 
 	//////////////////////////////////** Menu **//////////////////////////////////////////////////////////////////////
 	Route::get('/listmenus', 'App\Http\Controllers\MenuController@getmenu')->name('GM');
@@ -84,21 +84,21 @@ Route::group([
 
 	Route::get('/ficheprojet', 'App\Http\Controllers\GestionnaireController@getficheprojet')->name('GFP');
 	Route::get('/detailprojet', 'App\Http\Controllers\GestionnaireController@getplanificationprojet')->name('GDP');
-	
+
 	Route::get('/caisse', 'App\Http\Controllers\GestionnaireController@getcaisse')->name('GC');
 	Route::get('/caissee', 'App\Http\Controllers\GestionnaireController@getcaisse')->name('GE');
-	
+
 	Route::get('/decaissement', 'App\Http\Controllers\GestionnaireController@getdecaissement')->name('GD');
 	Route::get('/virementbancaire', 'App\Http\Controllers\GestionnaireController@getvirementbancaire')->name('GVB');
 	Route::get('/editioncheque', 'App\Http\Controllers\GestionnaireController@geteditioncheque')->name('GEC');
-	Route::get('/dette', 'App\Http\Controllers\GestionnaireController@getdette')->name('GDT'); 
+	Route::get('/dette', 'App\Http\Controllers\GestionnaireController@getdette')->name('GDT');
 	Route::get('/validation', 'App\Http\Controllers\GestionnaireController@getvalidation')->name('GVF');
 
 	Route::get('/sc', 'App\Http\Controllers\GestionnaireController@getsc')->name('GSDC');
 	Route::get('/dsc', 'App\Http\Controllers\GestionnaireController@getdetailsc')->name('GDSDC');
 	Route::get('/creance', 'App\Http\Controllers\GestionnaireController@getcreance')->name('GCA');
 
-	
+
 
 	//////////////////////////////////** Entreprise **///////////////////////////////////////////////////////////////////
 	Route::get('/listentreprise', 'App\Http\Controllers\ServiceController@listserv')->name('GS');
@@ -107,11 +107,22 @@ Route::group([
 	Route::get('/delete-entreprise-{id}', 'App\Http\Controllers\ServiceController@deleteserv')->name('DS');
 	Route::post('/modif-entreprise', 'App\Http\Controllers\ServiceController@modifserv')->name('SSL');
 
-	
+
+    //////////////////////////////////** Fructueux Routes **///////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Route::get('/besoins', 'App\Http\Controllers\BesoinController@index')->name('besoins');
+    Route::get('/modifierbesoin-{id}', 'App\Http\Controllers\BesoinController@show')->name('modifbesoins');
+    Route::get('/viewbesoin-{id}', 'App\Http\Controllers\BesoinController@showValidate')->name('viewbesoin');
+    Route::get('/validatebesoin-{id}', 'App\Http\Controllers\BesoinController@showViewValidate')->name('validatebesoin');
+    Route::post('/modifierbesoin', 'App\Http\Controllers\BesoinController@update')->name('modifierbesoin');
+    Route::post('/validatebesoin', 'App\Http\Controllers\BesoinController@validateBesoin')->name('validbesoin');
+    Route::post('/ajouterbesoin', 'App\Http\Controllers\BesoinController@add')->name('ajouterbesoin');
+    Route::get('/supprimerbesoin-{id}', 'App\Http\Controllers\BesoinController@delete')->name('supprimerbesoin');
+
 });
-	
-/* 
+
+/*
 |--------------------------------------------------------------------------
-| Web Routes 
+| Web Routes
 | Dev :	MDP-DEST
 */

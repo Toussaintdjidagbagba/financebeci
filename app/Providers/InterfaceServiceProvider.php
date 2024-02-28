@@ -22,7 +22,9 @@ class InterfaceServiceProvider extends ServiceProvider
     }
 
     public static function allutilisateurspersonnel(){
-        return DB::table('utilisateurs')->where('Role', 1)->get();
+        return DB::table('utilisateurs')
+        ->where('Role', 1)
+        ->get();
     }
 
     public static function getallperiode(){
@@ -32,10 +34,10 @@ class InterfaceServiceProvider extends ServiceProvider
     public static function LibService($id){
         $service = DB::table('services')->where('id', $id)->first();
         if(isset($service->libelle))
-            return $service->libelle;  
-        return "";   
+            return $service->libelle;
+        return "";
     }
-    
+
     public static function destinataire(){
         $alluser = DB::table('utilisateurs')->select('mail as mailR')->where('activereceiveincident', 0)->get();
         $mails = array();
@@ -49,8 +51,8 @@ class InterfaceServiceProvider extends ServiceProvider
     {
     	$role = DB::table('roles')->where('idRole', $id)->first();
     	if(isset($role->libelle))
-        	return $role->libelle;  
-        return "";      
+        	return $role->libelle;
+        return "";
     }
 
     public static function sexe($sigle)
@@ -93,7 +95,7 @@ class InterfaceServiceProvider extends ServiceProvider
             return DB::table('menus')->where('idMenu', $id)->first()->libelleMenu;
     }
     public static function recupactions($value)
-    { 
+    {
         return DB::table('action_menus')->where('Menu', $value)->get();
     }
 
@@ -118,5 +120,30 @@ class InterfaceServiceProvider extends ServiceProvider
             }
         }
         return $val;
+    }
+
+
+    ////////Fructueux ////////////////////////////
+
+    public static function UserService($id)
+    {
+        if($id == null)
+            return "";
+        return DB::table('services')
+                    ->join('utilisateurs', 'utilisateurs.Service', '=', 'services.id')
+                    ->where('idUser', $id)
+                    ->first()->libelle;
+    }
+
+
+    public static function UtilisateurChef()
+    {
+        return DB::table('utilisateurs')
+                // ->where('Role', 1)
+                ->whereIn('idUser', function($query){
+                    $query->select('chef')
+                ->from('services');
+    })
+    ->get();
     }
 }
