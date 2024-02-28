@@ -213,7 +213,7 @@ class BesoinController extends Controller
         //     return view("vendor.error.649");
         // }else{
 
-            $donnees = json_decode($request->tableauDonnees, true);
+            // $donnees = json_decode($request->tableauDonnees, true);
             $this->validate($request, [
                 'statut' => 'required|string',
                 'comment' => 'required|string',
@@ -225,12 +225,12 @@ class BesoinController extends Controller
             $parcourBesoin->statut = $request->statut;
             $parcourBesoin->commentaire = $request->comment;
             $parcourBesoin->save();
-            $parcourBesoin = new Parcoursbesoin();
-            $parcourBesoin->besoin = $request->idbesoin;
-            $parcourBesoin->validateur = $request->chefSuivant;
-            $parcourBesoin->statut = '';
-            $parcourBesoin->commentaire = '';
-            $parcourBesoin->save();
+            $parcourBesoin1 = new Parcoursbesoin();
+            $parcourBesoin1->besoin = $request->idbesoin;
+            $parcourBesoin1->validateur = $request->chefSuivant;
+            $parcourBesoin1->statut = '';
+            $parcourBesoin1->commentaire = '';
+            $parcourBesoin1->save();
 
             // return redirect()->route('votre_route_de_redirection')->with('success', 'Expression de besoin enregistrée avec succès!');
 
