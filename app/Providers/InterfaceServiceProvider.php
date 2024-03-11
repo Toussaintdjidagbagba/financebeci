@@ -8,6 +8,27 @@ use App\Models\Incident;
 
 class InterfaceServiceProvider extends ServiceProvider
 {
+    public static function LibSouscompte($id){
+        $sc = DB::table('souscomptes')->where('id', $id)->first();
+        if(isset($sc->compte))
+            return $sc->compte;
+        return "";
+    }
+
+    public static function allsouscomptes(){
+        return DB::table('souscomptes')->get();
+    }
+
+    public static function LibLigneBudgetaire($id){
+        $lb = DB::table('lignebudgetaires')->where('id', $id)->first();
+        if(isset($lb->description))
+            return $lb->description;
+        return "";
+    }
+
+    public static function alllignebudgetaire(){
+        return DB::table('lignebudgetaires')->get();
+    }
 
     public static function alldirections(){
         return DB::table('services')->where('structure', "DIRECTION")->get();

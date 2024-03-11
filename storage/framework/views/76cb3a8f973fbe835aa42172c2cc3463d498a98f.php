@@ -31,7 +31,7 @@
 </head>
 
 <body class="theme-red" style="background-image: url(fond.png); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
--moz-background-size: cover; background-attachment: fixed; 
+-moz-background-size: cover; background-attachment: fixed;
 -o-background-size: cover;">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -53,7 +53,7 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    
+
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -64,9 +64,9 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    
-                    
-                    
+
+
+
                     <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
                 </ul>
             </div>
@@ -99,19 +99,19 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                   
+
                             <li class="header">Principal</li>
-                            
+
                             <li>
                                 <a href="<?php echo e(route('dashboard')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i>
                                     <span>Tableau de bord</span>
                                 </a>
-                            </li>  
+                            </li> 
                             <li>
-                                <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>
+                                <a href="<?php echo e(route('besoins')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>
                                     Expression du besoins
                                 </span></a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
                                     <i class="large material-icons" style="color:#001e60">assessment</i>
@@ -137,7 +137,7 @@
                                             <span>Validations</span>
                                         </a>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
 
@@ -192,7 +192,7 @@
                                     </li>
 
                                 </ul>
-
+                            </li>
 
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
@@ -206,7 +206,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li> 
+                            </li>
 
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
@@ -249,36 +249,22 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <i class="large material-icons" style="color:#001e60">assessment</i>
-                                    <span>Prévisions</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="#">
-                                            <span>Encaissements</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Décaissments</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <a href="<?php echo e(route('GPVS')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>
+                                    Plan de trésorerie Général
+                                </span></a>
                             </li>
-                        </li>
 
                             <li>
                                 <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Aide</span></a>
                             </li>
                             <li class="header">Paramètres</li>
-                            
+
 
                             <li>
                                 <a href="<?php echo e(route('GS')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Directions/Services</span></a>
                             </li>
                             <li>
-                                <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Ligne budgétaire</span></a>
+                                <a href="<?php echo e(route('GLBGT')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Ligne budgétaire</span></a>
                             </li>
                             <li>
                                 <a href="<?php echo e(route('GR')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Rôles</span></a>
@@ -292,7 +278,7 @@
                              <li>
                                 <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Niveau de validités</span></a>
                             </li>
-                            
+
                         </ul>
             </div>
             <!-- #Menu -->
@@ -309,7 +295,7 @@
         </aside>
         <!-- #END# Left Sidebar -->
 
-        
+
     </section>
 
     <section class="content"  >
@@ -317,7 +303,7 @@
     </section>
 
     <?php echo $__env->yieldContent("model"); ?>
-        
+
 
     <?php echo $__env->yieldContent('js'); ?>
 
@@ -339,7 +325,7 @@
     <!-- Custom Js -->
     <script src="cssdste/js/admin.js"></script>
 
-    <script src="cssdste/js/pages/index.js"></script>    
+    <script src="cssdste/js/pages/index.js"></script>
 
     <!-- Demo Js -->
     <script src="cssdste/js/demo.js"></script>

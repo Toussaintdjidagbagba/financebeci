@@ -144,7 +144,7 @@ class ReflectionCaster
             array_unshift($trace, [
                 'function' => 'yield',
                 'file' => $function->getExecutingFile(),
-                'line' => $function->getExecutingLine() - (int) (\PHP_VERSION_ID < 80100),
+                'line' => $function->getExecutingLine() - 1,
             ]);
             $trace[] = $frame;
             $a[$prefix.'trace'] = new TraceStub($trace, false, 0, -1, -1);
@@ -197,7 +197,7 @@ class ReflectionCaster
         self::addMap($a, $c, [
             'returnsReference' => 'returnsReference',
             'returnType' => 'getReturnType',
-            'class' => \PHP_VERSION_ID >= 80111 ? 'getClosureCalledClass' : 'getClosureScopeClass',
+            'class' => 'getClosureScopeClass',
             'this' => 'getClosureThis',
         ]);
 
@@ -289,17 +289,15 @@ class ReflectionCaster
             unset($a[$prefix.'allowsNull']);
         }
 
-        if ($c->isOptional()) {
-            try {
-                $a[$prefix.'default'] = $v = $c->getDefaultValue();
-                if ($c->isDefaultValueConstant() && !\is_object($v)) {
-                    $a[$prefix.'default'] = new ConstStub($c->getDefaultValueConstantName(), $v);
-                }
-                if (null === $v) {
-                    unset($a[$prefix.'allowsNull']);
-                }
-            } catch (\ReflectionException $e) {
+        try {
+            $a[$prefix.'default'] = $v = $c->getDefaultValue();
+            if ($c->isDefaultValueConstant()) {
+                $a[$prefix.'default'] = new ConstStub($c->getDefaultValueConstantName(), $v);
             }
+            if (null === $v) {
+                unset($a[$prefix.'allowsNull']);
+            }
+        } catch (\ReflectionException $e) {
         }
 
         return $a;

@@ -5,7 +5,7 @@
     <!-- Bootstrap Select Css -->
     <link href="cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
-@endsection
+@endsection 
 
 @section('content')
 
@@ -32,7 +32,7 @@
                                     <thead>
                                     <tr>
                                         <th data-priority="1">Date</th>
-                                        <th data-priority="1">Statut</th>
+                                        <th data-priority="1">Niveau</th>
                                         <th data-priority="1">Nom et Prénoms</th>
                                         <th data-priority="1">Service</th>
                                         <th data-priority="6">Actions</th>
@@ -42,7 +42,7 @@
                                         @forelse($listValidate as $besoin)
                                         <tr @if ($besoin->urgence == "CRITIQUE")
                                             style="background-color: #FFF0F5;"
-                                        @endif>
+                                        @endif >
                                             <td>
                                                 {{$besoin->dateemission}}
                                             </td>
@@ -97,7 +97,7 @@
                                     <thead>
                                     <tr>
                                         <th data-priority="1">Date</th>
-                                        <th data-priority="1">Statut</th>
+                                        <th data-priority="1">Niveau</th>
                                         <th data-priority="1">Nom et Prénoms</th>
                                         {{-- <th data-priority="1">Prénoms</th> --}}
                                         <th data-priority="1">Service</th>

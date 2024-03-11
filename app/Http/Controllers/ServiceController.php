@@ -32,7 +32,7 @@ class ServiceController extends Controller
                 $add->chef =  $request->chef;
                 $add->structure = $request->struc;
                 if($request->struc == "SERVICE")
-                    $add->hierarchieservice = $request->direct;    
+                    $add->hierarchiedirection = $request->direct;    
                 $add->action = session("utilisateur")->idUser;
                 $add->save();
 

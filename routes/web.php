@@ -74,7 +74,7 @@ Route::group([
 	Route::get('/facturesemission', 'App\Http\Controllers\GestionnaireController@getfacturesemission')->name('GFE');
 
 	Route::get('/budget', 'App\Http\Controllers\GestionnaireController@getbudget')->name('GB');
-	Route::get('/budgetcreation', 'App\Http\Controllers\GestionnaireController@getbudgetcreation')->name('GBC');
+	
 
 	Route::get('/budgetsuivi', 'App\Http\Controllers\GestionnaireController@getbudgetsuivi')->name('GBS');
 	Route::get('/budgetsuivietatgeneral', 'App\Http\Controllers\GestionnaireController@getbudgetbudgetsuivietatgeneral')->name('GBSEG');
@@ -108,8 +108,7 @@ Route::group([
 	Route::post('/modif-entreprise', 'App\Http\Controllers\ServiceController@modifserv')->name('SSL');
 
 
-    //////////////////////////////////** Fructueux Routes **///////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////** Besoins **////////////////////////////////////////////////////////////////////
     Route::get('/besoins', 'App\Http\Controllers\BesoinController@index')->name('besoins');
     Route::get('/modifierbesoin-{id}', 'App\Http\Controllers\BesoinController@show')->name('modifbesoins');
     Route::get('/viewbesoin-{id}', 'App\Http\Controllers\BesoinController@showValidate')->name('viewbesoin');
@@ -118,6 +117,19 @@ Route::group([
     Route::post('/validatebesoin', 'App\Http\Controllers\BesoinController@validateBesoin')->name('validbesoin');
     Route::post('/ajouterbesoin', 'App\Http\Controllers\BesoinController@add')->name('ajouterbesoin');
     Route::get('/supprimerbesoin-{id}', 'App\Http\Controllers\BesoinController@delete')->name('supprimerbesoin');
+
+    //////////////////////////////////** Ligne budgetaire **///////////////////////////////////////////////////////////
+	Route::get('/lignebudgetaires', 'App\Http\Controllers\LigneBudgetaireController@getLigneBudgetaire')->name('GLBGT');
+	Route::post('/addlignebudgetaires', 'App\Http\Controllers\LigneBudgetaireController@setLigneBudgetaire')->name('ALBGT');
+	Route::post('/deletelignebudgetaires', 'App\Http\Controllers\LigneBudgetaireController@setdelete')->name('DLBGT');
+
+	//////////////////////////////////** Plan de trésorerie général **////////////////////////////////////////////////
+	Route::get('/plangeneraltresorerie', 'App\Http\Controllers\PrevisionController@getptg')->name('GPVS');
+	Route::post('/addplangeneraltresorerie', 'App\Http\Controllers\PrevisionController@setptg')->name('APVS');
+	Route::post('/deleteplangeneraltresorerie', 'App\Http\Controllers\PrevisionController@setdelete')->name('DPVS');
+
+	///////////////////////////////////** Compte Fonctionnel **//////////////////////////////////////////////////////
+	Route::get('/fonctionnement', 'App\Http\Controllers\CompteController@getscfonctionnement')->name('GBC');
 
 });
 

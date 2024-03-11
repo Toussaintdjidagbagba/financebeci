@@ -106,7 +106,7 @@
                                 <a href="{{route('dashboard')}}"><i class="large material-icons" style="color:#001e60">assessment</i>
                                     <span>Tableau de bord</span>
                                 </a>
-                            </li>
+                            </li> 
                             <li>
                                 <a href="{{route('besoins')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>
                                     Expression du besoins
@@ -192,7 +192,7 @@
                                     </li>
 
                                 </ul>
-
+                            </li>
 
                             <li>
                                 <a href="javascript:void(0);" class="menu-toggle">
@@ -249,24 +249,10 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
-                                    <i class="large material-icons" style="color:#001e60">assessment</i>
-                                    <span>Prévisions</span>
-                                </a>
-                                <ul class="ml-menu">
-                                    <li>
-                                        <a href="#">
-                                            <span>Encaissements</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Décaissments</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <a href="{{route('GPVS')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>
+                                    Plan de trésorerie Général
+                                </span></a>
                             </li>
-                        </li>
 
                             <li>
                                 <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Aide</span></a>
@@ -278,7 +264,7 @@
                                 <a href="{{route('GS')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Directions/Services</span></a>
                             </li>
                             <li>
-                                <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Ligne budgétaire</span></a>
+                                <a href="{{route('GLBGT')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Ligne budgétaire</span></a>
                             </li>
                             <li>
                                 <a href="{{route('GR')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Rôles</span></a>
