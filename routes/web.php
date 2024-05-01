@@ -47,6 +47,7 @@ Route::group([
 	Route::get('/active-mail-{id}', 'App\Http\Controllers\UtilisateurController@activeusermail')->name('ATUM');
 	Route::get('/modif-utilisateur-{id}', 'App\Http\Controllers\UtilisateurController@getmodifyuser')->name('MTU');
 	Route::post('/modif-utilisateur', 'App\Http\Controllers\UtilisateurController@modifyuser')->name('MTUS');
+	Route::get('/organigramme', 'App\Http\Controllers\OrganigrammeController@getOrganigramme')->name('GOU');
 
 	//////////////////////////////////** Rôle **//////////////////////////////////////////////////////////////////////
 	Route::get('/listroles', 'App\Http\Controllers\RoleController@listrole')->name('GR');
@@ -94,11 +95,6 @@ Route::group([
 	Route::get('/dette', 'App\Http\Controllers\GestionnaireController@getdette')->name('GDT');
 	Route::get('/validation', 'App\Http\Controllers\GestionnaireController@getvalidation')->name('GVF');
 
-	Route::get('/sc', 'App\Http\Controllers\GestionnaireController@getsc')->name('GSDC');
-	Route::get('/dsc', 'App\Http\Controllers\GestionnaireController@getdetailsc')->name('GDSDC');
-	Route::get('/creance', 'App\Http\Controllers\GestionnaireController@getcreance')->name('GCA');
-
-
 
 	//////////////////////////////////** Entreprise **///////////////////////////////////////////////////////////////////
 	Route::get('/listentreprise', 'App\Http\Controllers\ServiceController@listserv')->name('GS');
@@ -118,18 +114,86 @@ Route::group([
     Route::post('/ajouterbesoin', 'App\Http\Controllers\BesoinController@add')->name('ajouterbesoin');
     Route::get('/supprimerbesoin-{id}', 'App\Http\Controllers\BesoinController@delete')->name('supprimerbesoin');
 
-    //////////////////////////////////** Ligne budgetaire **///////////////////////////////////////////////////////////
-	Route::get('/lignebudgetaires', 'App\Http\Controllers\LigneBudgetaireController@getLigneBudgetaire')->name('GLBGT');
-	Route::post('/addlignebudgetaires', 'App\Http\Controllers\LigneBudgetaireController@setLigneBudgetaire')->name('ALBGT');
-	Route::post('/deletelignebudgetaires', 'App\Http\Controllers\LigneBudgetaireController@setdelete')->name('DLBGT');
+    //////////////////////////////////** Nature dépense **///////////////////////////////////////////////////////////
+	Route::get('/natures', 'App\Http\Controllers\NatureDepenseController@getNatureDepense')->name('GLBGT');
+	Route::post('/addnatures', 'App\Http\Controllers\NatureDepenseController@setNaturedepense')->name('ALBGT');
+	Route::post('/deletenatures', 'App\Http\Controllers\NatureDepenseController@setdelete')->name('DLBGT');
+	Route::post('/importexcelnatures', 'App\Http\Controllers\NatureDepenseController@importNaturedepense')->name('SIELBD');
+	Route::get('/exporternatures', 'App\Http\Controllers\NatureDepenseController@getExcelNaturedepense')->name('GELB');
 
 	//////////////////////////////////** Plan de trésorerie général **////////////////////////////////////////////////
 	Route::get('/plangeneraltresorerie', 'App\Http\Controllers\PrevisionController@getptg')->name('GPVS');
 	Route::post('/addplangeneraltresorerie', 'App\Http\Controllers\PrevisionController@setptg')->name('APVS');
 	Route::post('/deleteplangeneraltresorerie', 'App\Http\Controllers\PrevisionController@setdelete')->name('DPVS');
 
+	//////////////////////////////////** Budget Général **////////////////////////////////////////////////
+	Route::get('/listbudgetgeneral', 'App\Http\Controllers\BudgetGeneralController@getbudgetgeneral')->name('GLBG');
+	Route::post('/addbudgetgeneral', 'App\Http\Controllers\BudgetGeneralController@setLigneBudgetaire')->name('ABG');
+	Route::post('/deletebudgetgeneral', 'App\Http\Controllers\BudgetGeneralController@setdelete')->name('DBG');
+	Route::post('/importexcelbudget', 'App\Http\Controllers\BudgetGeneralController@setimportbudget')->name('SLGI');
+	Route::post('/importexcelbudgetanterieur', 'App\Http\Controllers\BudgetGeneralController@setbudgetanterieur')->name('SIBGA');
+	Route::get('/exporterlignebudgetaire', 'App\Http\Controllers\BudgetGeneralController@getExcelBudget')->name('EBG');
+	Route::get('/exemplebudget', 'App\Http\Controllers\BudgetGeneralController@getExemplaireForBudgetGeneral')->name('GLBFORBG');
+	Route::get('/exemplebudgetanterieur', 'App\Http\Controllers\BudgetGeneralController@getExemplaireForBudgetGeneralAnterieur')->name('GLBFORBGA');
+
 	///////////////////////////////////** Compte Fonctionnel **//////////////////////////////////////////////////////
-	Route::get('/fonctionnement', 'App\Http\Controllers\CompteController@getscfonctionnement')->name('GBC');
+	Route::get('/comptefonctionnement', 'App\Http\Controllers\CompteController@getscfonctionnement')->name('GCF');
+
+	///////////////////////////////////** Compte Social **//////////////////////////////////////////////////////
+	Route::get('/comptesocial', 'App\Http\Controllers\CompteController@getscsocial')->name('GCS');
+
+	///////////////////////////////////** Compte Investissement **//////////////////////////////////////////////////////
+	Route::get('/compteinvertissement', 'App\Http\Controllers\CompteController@getscinvertissement')->name('GCI');
+
+	///////////////////////////////////** Compte Dividende **//////////////////////////////////////////////////////
+	Route::get('/comptedividende', 'App\Http\Controllers\CompteController@getscdividente')->name('GCD');
+
+	///////////////////////////////////** Compte Projet **//////////////////////////////////////////////////////
+	Route::get('/compteprojet', 'App\Http\Controllers\CompteController@getscprojet')->name('GCP');
+
+
+	//////////////////////////////////** Projet **///////////////////////////////////////////////////////////////////
+	Route::get('/projets', 'App\Http\Controllers\ProjetController@getprojets')->name('GP');
+	Route::post('/addprojet', 'App\Http\Controllers\ProjetController@setAddProjet')->name('SAP');
+	Route::post('/addacteurprojet', 'App\Http\Controllers\ProjetController@setAddActorProjet')->name('SAAP');
+	Route::get('/ficheprojet-{titre}', 'App\Http\Controllers\ProjetController@getficheprojet')->name('GDFP');
+
+	//////////////////////////////////** Type de prestation **//////////////////////////////////////////////////////////////////////
+	Route::get('/listtypeprestation', 'App\Http\Controllers\TypeprestationController@listtypesprestation')->name('GTP');
+	Route::post('/prestation', 'App\Http\Controllers\TypeprestationController@addprestation')->name('AP');
+	Route::post('/delete-prestation-{id}', 'App\Http\Controllers\TypeprestationController@deleteprestation')->name('DPresta');
+
+	//////////////////////////////////** Type de financement **//////////////////////////////////////////////////////////////////////
+	Route::get('/listtypefinancement', 'App\Http\Controllers\TypefinancementController@listtypesfinancement')->name('GTF');
+	Route::post('/financement', 'App\Http\Controllers\TypefinancementController@addtypesfinancement')->name('AF');
+
+	//////////////////////////////////** Unite **////////////////////////////////////////////////
+	Route::get('/listunite', 'App\Http\Controllers\UniteController@getute')->name('GLUTE');
+	Route::post('/addunite', 'App\Http\Controllers\UniteController@setute')->name('SAUTE');
+	Route::post('/deleteaddunite', 'App\Http\Controllers\UniteController@setdelete')->name('DLUTE');
+
+	//////////////////////////////////** Banque **///////////////////////////////////////////////////////////////////
+	Route::get('/listbanque', 'App\Http\Controllers\BanqueController@listbanque')->name('LB');
+	Route::post('/add-banque', 'App\Http\Controllers\BanqueController@setbanque')->name('AB');
+	Route::post('/delete-banque', 'App\Http\Controllers\BanqueController@deletebanque')->name('DB');
+
+	//////////////////////////////////** Partenaire **////////////////////////////////////////////////
+	Route::get('/partenaire', 'App\Http\Controllers\PartenaireController@getpartenaire')->name('GPTN');
+	Route::post('/addpartenaire', 'App\Http\Controllers\PartenaireController@setpartenaire')->name('APTN');
+	Route::post('/deletepartenaire', 'App\Http\Controllers\PartenaireController@setdelete')->name('DPTN');
+
+	//////////////////////////////////** Partenaire Projet **////////////////////////////////////////////////
+	Route::get('/partenaireprojet', 'App\Http\Controllers\ProjetController@getAllpartenaireInprojet')->name('GPTNP');
+	Route::post('/partenaireprojet', 'App\Http\Controllers\ProjetController@setpartenaireprojet')->name('APTNP');
+	Route::post('/deletepartenaireprojet', 'App\Http\Controllers\ProjetController@setdeletepartenaireprojet')->name('DPTN');
+
+	//////////////////////////////////** Compte **///////////////////////////////////////////////////////////////////
+	Route::get('/situationcompte', 'App\Http\Controllers\CompteController@getcomptes')->name('GSDC');
+	Route::post('/situationcompte', 'App\Http\Controllers\CompteController@setcomptes')->name('SAC');
+	Route::post('/deletecompte', 'App\Http\Controllers\CompteController@setdelete')->name('DSC');
+	Route::get('/fichecompte{id}', 'App\Http\Controllers\CompteController@getdetailcompte')->name('GDSC');
+
+	Route::get('/creance', 'App\Http\Controllers\GestionnaireController@getcreance')->name('GCA');
 
 });
 

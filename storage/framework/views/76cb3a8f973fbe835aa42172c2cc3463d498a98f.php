@@ -6,31 +6,31 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title><?php echo e(config('app.name')); ?></title>
     <!-- Favicon-->
-    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/logo.png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="cssdste/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="public/cssdste/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="cssdste/node-waves/waves.css" rel="stylesheet" />
+    <link href="public/cssdste/node-waves/waves.css" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="cssdste/animate-css/animate.css" rel="stylesheet" />
+    <link href="public/cssdste/animate-css/animate.css" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="cssdste/css/style.css" rel="stylesheet">
+    <link href="public/cssdste/css/style.css" rel="stylesheet">
 
-    <link href="cssdste/css/themes/all-themes.css" rel="stylesheet" />
+    <link href="public/cssdste/css/themes/all-themes.css" rel="stylesheet" />
 
     <?php echo $__env->yieldContent('css'); ?>
 
 </head>
 
-<body class="theme-red" style="background-image: url(fond.png); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
+<body class="theme-red" style="background-image: url(public/fond.png); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
 -moz-background-size: cover; background-attachment: fixed;
 -o-background-size: cover;">
     <!-- Page Loader -->
@@ -77,10 +77,10 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info"  style="background-image : url('fondprofil.png'); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
+            <div class="user-info"  style="background-image : url('public/fondprofil.png'); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
             -moz-background-size: cover; -o-background-size: cover;">
                 <div class="image">
-                    <img src="cssdste/images/user.png" width="48" height="48" alt="User" />
+                    <img src="public/cssdste/images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div style="color:#001e60" class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo e(session('utilisateur')->nom); ?> <?php echo e(session('utilisateur')->prenom); ?></div>
@@ -149,27 +149,27 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="<?php echo e(route('GBC')); ?>">
+                                        <a href="<?php echo e(route('GCF')); ?>">
                                             <span>Fonctionnement</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo e(route('GCS')); ?>">
                                             <span>Social</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo e(route('GCI')); ?>">
                                             <span>Investissement</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo e(route('GCD')); ?>">
                                             <span>Dividende</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo e(route('GCP')); ?>">
                                             <span>Projet</span>
                                         </a>
                                     </li>
@@ -201,7 +201,7 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="<?php echo e(route('GFP')); ?>">
+                                        <a href="<?php echo e(route('GP')); ?>">
                                             <span>Liste des Projets</span>
                                         </a>
                                     </li>
@@ -253,18 +253,41 @@
                                     Plan de trésorerie Général
                                 </span></a>
                             </li>
+                            <li>
+                                <a href="<?php echo e(route('GLBG')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>
+                                    Budget Général
+                                </span></a>
+                            </li>
 
                             <li>
                                 <a href="#"><i class="large material-icons" style="color:#001e60">assessment</i><span>Aide</span></a>
                             </li>
                             <li class="header">Paramètres</li>
-
-
+                            <li>
+                                <a href="<?php echo e(route('LB')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Banque</span></a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(route('GLUTE')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>
+                                    Liste des Unités
+                                </span></a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(route('GOU')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Organigramme</span></a>
+                            </li>
                             <li>
                                 <a href="<?php echo e(route('GS')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Directions/Services</span></a>
                             </li>
                             <li>
-                                <a href="<?php echo e(route('GLBGT')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Ligne budgétaire</span></a>
+                                <a href="<?php echo e(route('GLBGT')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Nature des dépenses</span></a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(route('GTP')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Type de prestation</span></a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(route('GTF')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Type de financement</span></a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(route('GPTN')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Partenaire</span></a>
                             </li>
                             <li>
                                 <a href="<?php echo e(route('GR')); ?>"><i class="large material-icons" style="color:#001e60">assessment</i><span>Rôles</span></a>
@@ -308,27 +331,27 @@
     <?php echo $__env->yieldContent('js'); ?>
 
     <!-- Jquery Core Js -->
-    <script src="cssdste/jquery/jquery.min.js"></script>
+    <script src="public/cssdste/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="cssdste/bootstrap/js/bootstrap.js"></script>
+    <script src="public/cssdste/bootstrap/js/bootstrap.js"></script>
 
     <!-- Select Plugin Js -->
-    <script src="cssdste/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="public/cssdste/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Slimscroll Plugin Js -->
-    <script src="cssdste/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="public/cssdste/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Waves Effect Plugin Js -->
-    <script src="cssdste/node-waves/waves.js"></script>
+    <script src="public/cssdste/node-waves/waves.js"></script>
 
     <!-- Custom Js -->
-    <script src="cssdste/js/admin.js"></script>
+    <script src="public/cssdste/js/admin.js"></script>
 
-    <script src="cssdste/js/pages/index.js"></script>
+    <script src="public/cssdste/js/pages/index.js"></script>
 
     <!-- Demo Js -->
-    <script src="cssdste/js/demo.js"></script>
+    <script src="public/cssdste/js/demo.js"></script>
 </body>
 
 </html>

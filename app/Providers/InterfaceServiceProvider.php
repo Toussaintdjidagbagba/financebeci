@@ -8,6 +8,57 @@ use App\Models\Incident;
 
 class InterfaceServiceProvider extends ServiceProvider
 {
+
+    public static function getmontantmois($data, $mois){
+        
+        if ($data == null) {
+            return 0;
+        }
+        $dataarray = json_decode($data);
+
+        foreach ($dataarray as $value) {
+            if($value->mois == $mois){
+                return $value->montant;
+            }
+        }
+        return 0;
+    }
+
+    public static function getlg($id){
+        $lb = DB::table('naturedepenses')->where('id', $id)->first();
+        return $lb;
+    }
+
+    public static function getpj($id){
+        $lb = DB::table('projets')->where('id', $id)->first();
+        return $lb;
+    }
+
+    public static function ProjetListe($id){
+        $pl = DB::table('projets')->where('id', $id)->first();
+        if(isset($pl->titre_projet))
+            return $pl->titre_projet;
+        return "";
+    }
+
+    public static function libelleClient($id){
+        $pl = DB::table('utilisateurs')->where('idUser', $id)->first();
+        if(isset($pl->nom))
+            return $pl->nom;
+        return "";
+    }
+
+    public static function allprestation(){
+        return DB::table('typesprestations')->get();
+    }
+
+    public static function allpartenaire(){
+        return DB::table('partenaires')->get();
+    }
+    public static function alltpfinancement(){
+        return DB::table('typesfinancements')->get();
+    }
+
     public static function LibSouscompte($id){
         $sc = DB::table('souscomptes')->where('id', $id)->first();
         if(isset($sc->compte))
@@ -16,22 +67,26 @@ class InterfaceServiceProvider extends ServiceProvider
     }
 
     public static function allsouscomptes(){
-        return DB::table('souscomptes')->get();
+        return DB::table('souscomptes')->where("typecompte", "Virtuel")->get();
     }
 
     public static function LibLigneBudgetaire($id){
-        $lb = DB::table('lignebudgetaires')->where('id', $id)->first();
+        $lb = DB::table('naturedepenses')->where('id', $id)->first();
         if(isset($lb->description))
             return $lb->description;
         return "";
     }
 
     public static function alllignebudgetaire(){
-        return DB::table('lignebudgetaires')->get();
+        return DB::table('naturedepenses')->get();
     }
 
     public static function alldirections(){
-        return DB::table('services')->where('structure', "DIRECTION")->get();
+        return DB::table('services')->where('structure', "DIRECTION")->orwhere('structure', "DG")->get();
+    }
+
+    public static function allpdg(){
+        return DB::table('services')->where('structure', "PDG")->get();
     }
 
     public static function allutilisateurs(){
@@ -44,7 +99,7 @@ class InterfaceServiceProvider extends ServiceProvider
 
     public static function allutilisateurspersonnel(){
         return DB::table('utilisateurs')
-        ->where('Role', 1)
+        ->where('Role', '!=', 1)
         ->get();
     }
 
@@ -105,7 +160,11 @@ class InterfaceServiceProvider extends ServiceProvider
     {
         if($id == null)
             return "";
-        return DB::table('services')->where('id', $id)->first()->libelle;
+        $lib = DB::table('services')->where('id', $id)->first();
+        if(isset($lib->libelle)){
+            return $lib->libelle;
+        }
+        return "";
     }
 
     public static function libmenu($id)

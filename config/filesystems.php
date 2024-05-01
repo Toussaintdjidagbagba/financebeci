@@ -38,6 +38,21 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            //'root' => storage_path('app/'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'excelstoreerror' => [
+            'driver' => 'local',
+            'root' => public_path('documents/error/'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'excelstoreexport' => [
+            'driver' => 'local',
+            'root' => public_path('documents/export/'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

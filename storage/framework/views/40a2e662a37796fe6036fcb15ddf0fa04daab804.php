@@ -3,7 +3,7 @@
 <?php $__env->startSection('css'); ?>
 
     <!-- Bootstrap Select Css -->
-    <link href="cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="public/cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
 <?php $__env->stopSection(); ?>
 
@@ -13,7 +13,7 @@
             <div class="block-header">
                 <?php echo $__env->make('flash::message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <h2>
-                    Budget
+                    Paramètres
                     <small></small>
                 </h2>
             </div>
@@ -23,24 +23,21 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Liste des lignes budgétaire
+                                Liste des dépenses
                             
                             <button type="button" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#add"><i class="material-icons"> note_add </i> </button>
                             <button type="button" title="Importer" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#imp"><i class="material-icons"> cloud_upload </i> </butt0on>
-                            <button type="button" title="Exporter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#exp"><i class="material-icons">picture_as_pdf</i> </butt0on>
+                            <a href="<?php echo e(route('GELB')); ?>">  <button type="button" title="Exporter"  style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#exp"><i class="material-icons">picture_as_pdf</i> </butt0on></a>
                             </h2>
                         </div>
-                        <div class="body">
+                        <div class="body"> 
                             <div class="table-responsive" data-pattern="priority-columns">
                                 <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th data-priority="1">Code</th>
                                         <th data-priority="1">Description</th>
-                                        <th data-priority="1">Quantité</th>
-                                        <th data-priority="1">Montant Alloué</th>
-                                        <th data-priority="1">Montant Utilisé</th>
-                                        <th data-priority="1">Sous compte</th>
+                                        <!--th data-priority="1">Sous compte syscoahada</th-->
                                         <th data-priority="1">Commentaire</th>
                                         <th data-priority="6">Actions</th>
                                     </tr>
@@ -50,10 +47,7 @@
                                         <tr>
                                             <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->code); ?></td>
                                             <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->description); ?></td>
-                                            <td style="vertical-align:middle; text-align: center;"><?php echo e(number_format($serv->quantite, 0, '.', ' ')); ?></td> 
-                                            <td style="vertical-align:middle; text-align: center;"><?php echo e(number_format($serv->montantalloue, 0, '.', ' ')); ?></td>
-                                            <td style="vertical-align:middle; text-align: center;"> <?php echo e(number_format($serv->montantutilise, 0, '.', ' ')); ?></td>
-                                            <td style="vertical-align:middle; text-align: center;"><?php echo e(App\Providers\InterfaceServiceProvider::LibSouscompte($serv->souscompte)); ?></td>
+                                            <!--td style="vertical-align:middle; text-align: center;"><?php echo e(number_format($serv->comptesyscoahada, 0, '.', ' ')); ?></td--> 
                                             <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->commentaire); ?></td>
                                             <td style="vertical-align:middle; text-align: center;">
                                                 <?php if(in_array("update_service", session("auto_action"))): ?>
@@ -71,7 +65,7 @@
                                         </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                         <tr>
-                                            <td colspan="8"><center>Pas de ligne budgétaire préalablement enregistrer!!!</center> </td>
+                                            <td colspan="4"><center>Pas de ligne budgétaire préalablement enregistrer!!!</center> </td>
                                         </tr>
                                         <?php endif; ?>
                                     </tbody>
@@ -102,7 +96,7 @@
                     <div class="row clearfix">
                         
                         <div class="col-md-6">
-                            <label for="code">Code : </label> 
+                            <label for="code">Code ( <i style="color: red;">*</i> ) : </label> 
                            <div class="form-group">
                             <div class="form-line">
                                 <input type="text" id="code" name="code" class="form-control" placeholder="">
@@ -110,7 +104,7 @@
                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="dlesc">Description :</label>
+                            <label for="dlesc">Description ( <i style="color: red;">*</i> ) :</label>
                            <div class="form-group">
                             <div class="form-line">
                                 <input type="text" id="dlesc" name="dlesc" class="form-control" placeholder="">
@@ -120,10 +114,10 @@
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-6">
-                            <label for="quantite">Quantité : </label> 
+                            <label for="comptesys">Compte SysHoada : </label> 
                            <div class="form-group">
                             <div class="form-line">
-                                <input type="text" id="quantite" name="quantite" class="form-control" placeholder="">
+                                <input type="number" id="comptesys" name="comptesys" class="form-control" placeholder="">
                             </div>
                            </div>
                         </div>
@@ -132,31 +126,6 @@
                            <div class="form-group">
                             <div class="form-line">
                                 <input type="text" id="commentaire" name="commentaire" class="form-control" placeholder="">
-                            </div>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix" id="controledirect">
-                        <div class="col-md-6">
-                            <label for="montantal">Montant alloué : </label> 
-                           <div class="form-group">
-                            <div class="form-line">
-                                <input type="number" id="montantal" name="montantal" class="form-control" placeholder="">
-                            </div>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="sc">Sous compte : </label> 
-                            <div class="form-group">
-                            <div class="form-line">
-                                <select type="text" id="sc" name="sc" class="form-control" placeholder="">
-                                    <?php 
-                                        $comptes = App\Providers\InterfaceServiceProvider::allsouscomptes();
-                                    ?> 
-                                    <?php $__currentLoopData = $comptes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($sc->id); ?>"><?php echo e($sc->compte); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
                             </div>
                            </div>
                         </div>
@@ -183,7 +152,7 @@
                     <div class="row clearfix">
                         
                         <div class="col-md-6">
-                            <label for="code_u">Code : </label> 
+                            <label for="code_u">Code ( <i style="color: red;">*</i> ) : </label> 
                            <div class="form-group">
                             <div class="form-line">
                                 <input type="hidden" id="code_u" name="code_u" class="form-control" placeholder="">
@@ -192,7 +161,7 @@
                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="dlesc_u">Description :</label>
+                            <label for="dlesc_u">Description ( <i style="color: red;">*</i> ) :</label>
                            <div class="form-group">
                             <div class="form-line">
                                 <input type="text" id="dlesc_u" name="dlesc_u" class="form-control" placeholder="">
@@ -202,10 +171,10 @@
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-6">
-                            <label for="quantite_u">Quantité : </label> 
+                            <label for="comptesys_u">Compte SysHoada : </label> 
                            <div class="form-group">
                             <div class="form-line">
-                                <input type="text" id="quantite_u" name="quantite_u" class="form-control" placeholder="">
+                                <input type="number" id="comptesys_u" name="comptesys_u" class="form-control" placeholder="">
                             </div>
                            </div>
                         </div>
@@ -218,31 +187,7 @@
                            </div>
                         </div>
                     </div>
-                    <div class="row clearfix" id="controledirect">
-                        <div class="col-md-6">
-                            <label for="montantal_u">Montant alloué : </label> 
-                           <div class="form-group">
-                            <div class="form-line">
-                                <input type="number" id="montantal_u" name="montantal_u" class="form-control" placeholder="">
-                            </div>
-                           </div>
-                        </div>
-                        <div class="col-md-6" >
-                            <label for="sc_u">Sous compte : </label> 
-                           <div class="form-group">
-                            <div class="form-line" id="see_u">
-                                <select type="text" id="sc_u" name="sc_u" class="form-control" placeholder="">
-                                    <?php 
-                                        $comptes = App\Providers\InterfaceServiceProvider::allsouscomptes();
-                                    ?> 
-                                    <?php $__currentLoopData = $comptes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($sc->id); ?>"><?php echo e($sc->compte); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </select>
-                            </div>
-                           </div>
-                        </div>
-                    </div>
+                    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">FERMER</button>
@@ -283,6 +228,7 @@
                 <h4 class="modal-title" id="myModalLabel">Importer : </h4>
             </div>
             <div class="modal-body">
+                <form method="post" action="<?php echo e(route('SIELBD')); ?>"  enctype="multipart/form-data">
                     <input type="hidden" id="_token" name="_token" value="<?php echo e(csrf_token()); ?>" />
                     
                     <div class="row clearfix">
@@ -294,8 +240,8 @@
                                 </div>
                                </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="data">Sous-compte : </label> 
+                        <!--div class="col-md-6">
+                            <label for="isc">Sous-compte : </label> 
                             <div class="form-group">
                                 <div class="form-line">
                                     <select type="text" id="isc" name="isc" class="form-control" placeholder="">
@@ -308,22 +254,23 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row clearfix">
-                        <div class="col-md-12">
+                        </div-->
+                        <div class="col-md-6">
                             <label for="dlesc">Télécharger le fichier exemplaire :</label>
                                <div class="form-group">
                                 <br>
-                                <a href="Exemplaire_ligne_budgetaire.xlsx"> Exemplaire_ligne_budgétaire.xlsx </a>
+                                <a href="public/Exemplaire_ligne_budgetaire.xlsx"> Exemplaire_ligne_budgétaire.xlsx </a>
                             
                                </div>
                         </div>
                     </div>
+                    <div class="row clearfix">
+                        
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">FERMER</button>
-                <button id="imp" onclick="valideimp()" class="btn bg-deep-orange waves-effect">IMPORTER</button>
+                <button type="submit" class="btn bg-deep-orange waves-effect">IMPORTER</button>
             </div>
         </div>
     </div>
@@ -336,13 +283,11 @@
                 token = document.getElementById("_token").value;
                 code = document.getElementById("code").value;
                 dlesc = document.getElementById("dlesc").value;
-                quantite = document.getElementById("quantite").value;
+                comptesys = document.getElementById("comptesys").value;
                 commentaire = document.getElementById("commentaire").value;
-                montantal = document.getElementById("montantal").value;
-                sc = document.getElementById("sc").value;
                 
             
-                if(token == "" || code == "" || dlesc == "" || quantite == "" || montantal == ""){
+                if(token == "" || code == "" || dlesc == ""){
                     error = "";
                     if(token == "")
                         error += ". Veuillez vous reconnecter pour continuer <br>";
@@ -350,16 +295,12 @@
                         error += ". Le champ Code ne peut pas être vide <br>";
                     if(dlesc == "")
                         error += ". Le champ Description ne peut pas être vide <br>";
-                    if(quantite == "")
-                        error += ". Le champ Quantité ne peut pas être vide <br>";
-                    if(montantal == "")
-                        error += ". Le champ Montant alloué ne peut pas être vide <br>";
-
+                    
                     document.getElementById('infoadd').innerHTML = "<div class='alert alert-danger alert-block'> "+error+" </div>";
                 }else{
                     // lb pour ligne budgetaire suivi du libellé des données en empaquetage 
                     dat = {
-                        _token: token, lbcode: code, lbdlesc: dlesc, lbquantite: quantite, lbcommentaire: commentaire, lbmontantal: montantal, lbsc: sc,
+                        _token: token, lbcode: code, lbdlesc: dlesc, lbcomptesys: comptesys, lbcommentaire: commentaire,
                     };
 
                     document.getElementById("infoadd").innerHTML = '<div class="alert alert-warning alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>En cours de traitement.. <br> Veuillez patienter! </strong></div>';
@@ -386,6 +327,10 @@
                                 {
                                     document.getElementById("infoadd").innerHTML = '<div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>'+reponse.messages+'</strong></div>';
                                     //getlistAntecedent();
+                                    setTimeout(function(){
+                                        window.location.href = "<?php echo e(route('GLBGT')); ?>";
+                                    }, 3000);
+
                                 }else{
                                     document.getElementById("infoadd").innerHTML = '<div class="alert alert-block alert-danger"><button type="button" class="close" data-dismiss="alert">×</button><strong>'+reponse.messages+'</strong></div>';
                                 }
@@ -404,10 +349,9 @@
             document.getElementById('code_u').value = data.code;
             document.getElementById('seecode_u').value = data.code; 
             document.getElementById('dlesc_u').value = data.description;
-            document.getElementById('quantite_u').value = data.quantite;
+            document.getElementById('comptesys_u').value = data.comptesyscoahada;
             document.getElementById('commentaire_u').value = data.commentaire;
-            document.getElementById('montantal_u').value = data.montantalloue;
-            document.getElementById('see_u').innerHTML = '<select type="text" id="sc_u" name="sc_u" class="form-control" placeholder=""> <option value="'+data.souscompte+'">'+name+'</option> <?php $comptes = App\Providers\InterfaceServiceProvider::allsouscomptes(); ?> <?php $__currentLoopData = $comptes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <option value="<?php echo e($sc->id); ?>"><?php echo e($sc->compte); ?></option> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> </select>';
+            //document.getElementById('see_u').innerHTML = '<select type="text" id="sc_u" name="sc_u" class="form-control" placeholder=""> <option value="'+data.souscompte+'">'+name+'</option> <?php $comptes = App\Providers\InterfaceServiceProvider::allsouscomptes(); ?> <?php $__currentLoopData = $comptes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> <option value="<?php echo e($sc->id); ?>"><?php echo e($sc->compte); ?></option> <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> </select>'; 
         }
 
         async function valideupdate(){
@@ -415,13 +359,11 @@
                 token = document.getElementById("_token").value;
                 code = document.getElementById("code_u").value;
                 dlesc = document.getElementById("dlesc_u").value;
-                quantite = document.getElementById("quantite_u").value;
+                comptesys = document.getElementById("comptesys_u").value;
                 commentaire = document.getElementById("commentaire_u").value;
-                montantal = document.getElementById("montantal_u").value;
-                sc = document.getElementById("sc_u").value;
                 
             
-                if(token == "" || code == "" || dlesc == "" || quantite == "" || montantal == ""){
+                if(token == "" || code == "" || dlesc == "" ){
                     error = "";
                     if(token == "")
                         error += ". Veuillez vous reconnecter pour continuer <br>";
@@ -429,16 +371,12 @@
                         error += ". Le champ Code ne peut pas être vide <br>";
                     if(dlesc == "")
                         error += ". Le champ Description ne peut pas être vide <br>";
-                    if(quantite == "")
-                        error += ". Le champ Quantité ne peut pas être vide <br>";
-                    if(montantal == "")
-                        error += ". Le champ Montant alloué ne peut pas être vide <br>";
 
                     document.getElementById('infoupdate').innerHTML = "<div class='alert alert-danger alert-block'> "+error+" </div>";
                 }else{
                     // lb pour ligne budgetaire suivi du libellé des données en empaquetage 
                     dat = {
-                        _token: token, lbcode: code, lbdlesc: dlesc, lbquantite: quantite, lbcommentaire: commentaire, lbmontantal: montantal, lbsc: sc,
+                        _token: token, lbcode: code, lbdlesc: dlesc, lbcomptesys: comptesys, lbcommentaire: commentaire,
                     };
 
                     document.getElementById("infoupdate").innerHTML = '<div class="alert alert-warning alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>En cours de traitement.. <br> Veuillez patienter! </strong></div>';
@@ -464,7 +402,9 @@
                                 if(reponse.status == 0)
                                 {
                                     document.getElementById("infoupdate").innerHTML = '<div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>'+reponse.messages+'</strong></div>';
-                                    //getlistAntecedent();
+                                    setTimeout(function(){
+                                        window.location.href = "<?php echo e(route('GLBGT')); ?>";
+                                    }, 3000);
                                 }else{
                                     document.getElementById("infoupdate").innerHTML = '<div class="alert alert-block alert-danger"><button type="button" class="close" data-dismiss="alert">×</button><strong>'+reponse.messages+'</strong></div>';
                                 }
@@ -507,6 +447,9 @@
                             {
                                 data = await response.text();
                                 document.getElementById("infodelete").innerHTML = '<div class="alert alert-success alert-block"><button type="button" class="close" data-dismiss="alert">×</button><strong>'+data+'</strong></div>';
+                                setTimeout(function(){
+                                        window.location.href = "<?php echo e(route('GLBGT')); ?>";
+                                    }, 3000);
                             }
                             else{
                                 document.getElementById("infodelete").innerHTML = '<div class="alert alert-danger alert-block"> <button type="button" class="close" data-dismiss="alert">×</button><strong>Une erreur s\'est produite </strong></div>';
@@ -514,10 +457,6 @@
                         } catch (error) {
                             document.getElementById("infodelete").innerHTML = error;
                         } 
-        }
-
-        async function valideimp(){
-
         }
     </script>
 

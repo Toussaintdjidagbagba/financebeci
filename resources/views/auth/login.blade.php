@@ -14,20 +14,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="cssdste/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ asset('public/cssdste/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="cssdste/node-waves/waves.css" rel="stylesheet" />
+    <link href="{{ asset('public/cssdste/node-waves/waves.css') }}" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="cssdste/animate-css/animate.css" rel="stylesheet" />
+    <link href="{{ asset('public/cssdste/animate-css/animate.css') }}" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="cssdste/css/style.css" rel="stylesheet">
+    <link href="{{ asset('public/cssdste/css/style.css') }}" rel="stylesheet">
     
 </head>
 
-<body class="login-page" style="background-image : url('photo.png'); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
+<body class="login-page" style="background-image : url('public/photo.png'); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
 -moz-background-size: cover; background-attachment: fixed; 
 -o-background-size: cover;">
     <center style="border-radius: 10px; margin-left: 50%; z-index: 1; left: 50%;top: 75%; transform: translate(-50%, 15%); width: 360px;"> @include('flash::message')</center> 
@@ -81,24 +81,24 @@
     @yield('js')
 
     <!-- Jquery Core Js -->
-    <script src="cssdste/jquery/jquery.min.js"></script>
+    <script src="{{ asset('public/cssdste/jquery/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="cssdste/bootstrap/js/bootstrap.js"></script>
+    <script src="{{ asset('public/cssdste/bootstrap/js/bootstrap.js') }}"></script>
 
     <!-- Waves Effect Plugin Js -->
-    <script src="cssdste/node-waves/waves.js"></script>
+    <script src="{{ asset('public/cssdste/node-waves/waves.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="cssdste/js/admin.js"></script>
+    <script src="{{ asset('public/cssdste/js/admin.js') }}"></script>
 
     <!-- Demo Js -->
-    <script src="cssdste/js/demo.js"></script>
+    <script src="{{ asset('public/cssdste/js/demo.js') }}"></script>
 
     <!-- Validation Plugin Js -->
-    <script src="cssdste/jquery-validation/jquery.validate.js"></script>
+    <script src="{{ asset('public/cssdste/jquery-validation/jquery.validate.js') }}"></script>
 
-    <script src="cssdste/examples/sign-in.js"></script>
+    <script src="{{ asset('public/cssdste/examples/sign-in.js') }}"></script>
 
     <script>
         $('#flash-overlay-modal').modal();

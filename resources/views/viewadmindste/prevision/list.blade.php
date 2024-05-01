@@ -3,7 +3,7 @@
 @section('css')
 
     <!-- Bootstrap Select Css -->
-    <link href="cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="public/cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
 @endsection
 
@@ -17,6 +17,105 @@
                     <small></small>
                 </h2>
             </div>
+
+            <div class="row clearfix">
+                
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body">
+                            <div class="table-responsive" data-pattern="priority-columns">
+                                <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th data-priority="1">Mois</th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="6"></th>
+                                    </tr>
+                                    <tr>
+                                        <th data-priority="1">Total Encaissement</th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="6"></th>
+                                    </tr>
+                                    <tr>
+                                        <th data-priority="1">Total Décaissement</th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="6"></th>
+                                    </tr>
+                                    <tr>
+                                        <th data-priority="1">Différence</th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="6"></th>
+                                    </tr>
+                                    <tr>
+                                        <th data-priority="1">Trésorerie nette</th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="1"></th>
+                                        <th data-priority="6"></th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div> 
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
             <div class="row clearfix">
                 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -337,7 +436,7 @@
                                 <label for="dlesc">Télécharger le fichier exemplaire :</label>
                                <div class="form-group">
                                 <br>
-                                    <a href="Exemplaire_plan_tresorerie.xlsx"> Exemplaire_Plan_Trésorerie.xlsx </a>
+                                    <a href="public/Exemplaire_plan_tresorerie.xlsx"> Exemplaire_Plan_Trésorerie.xlsx </a>
                                 
                                </div>
                             </div>

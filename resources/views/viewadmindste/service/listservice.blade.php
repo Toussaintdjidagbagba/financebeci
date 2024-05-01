@@ -3,7 +3,7 @@
 @section('css')
 
     <!-- Bootstrap Select Css -->
-    <link href="cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="public/cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
 @endsection
 
@@ -126,8 +126,10 @@
                            <div class="form-group">
                             <div class="form-line">
                                 <select type="text" id="struc" name="struc" onchange="seedirection()" class="form-control" placeholder="">
+                                    <option>DG</option>
                                     <option>DIRECTION</option>
                                     <option>SERVICE</option>
+                                    <option>ASSISTANT</option>
                                 </select>
                             </div>
                            </div>
@@ -148,9 +150,44 @@
                            </div>
                         </div>
                     </div>
+                    <div class="row clearfix" id="controlepdg" style="display: none;">
+                        <div class="col-md-6">
+                            <label for="pdg">Hieararchie directe : </label> 
+                           <div class="form-group">
+                            <div class="form-line">
+                                <select type="text" id="pdg" name="pdg" class="form-control" placeholder="">
+                                    @php 
+                                        $structure = App\Providers\InterfaceServiceProvider::allpdg();
+                                    @endphp 
+                                    @foreach($structure as $structurehierarchie)
+                                        <option value="{{$structurehierarchie->id}}">{{$structurehierarchie->libelle}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
                     <div class="row clearfix" id="controledirect" style="display: none;">
                         <div class="col-md-6">
-                            <label for="direct">Hieararchie direction : </label> 
+                            <label for="directs">Hieararchie direction : </label> 
+                           <div class="form-group">
+                            <div class="form-line">
+                                <select type="text" id="directs" name="directs" class="form-control" placeholder="">
+                                    @php 
+                                        $structure = App\Providers\InterfaceServiceProvider::alldirections();
+                                    @endphp 
+                                    @foreach($structure as $structurehierarchie)
+                                        <option value="{{$structurehierarchie->id}}">{{$structurehierarchie->libelle}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row clearfix" id="controleassistants" style="display: none;">
+                        <div class="col-md-6">
+                            <label for="direct">Hieararchie assistant : </label> 
                            <div class="form-group">
                             <div class="form-line">
                                 <select type="text" id="direct" name="direct" class="form-control" placeholder="">
@@ -179,12 +216,32 @@
         function seedirection() {
             structure = document.getElementById("struc").value;
 
+            if(structure == "DIRECTION")
+            {
+                document.getElementById('controlepdg').style.display = "block";
+                document.getElementById('controledirect').style.display = "none";
+
+            }else if(structure == "SERVICE")
+            {
+                document.getElementById('controledirect').style.display = "block";
+                document.getElementById('controlepdg').style.display = "none";
+                document.getElementById('controleassistants').style.display = "none";
+            }else if(structure == "ASSISTANT")
+            {
+                document.getElementById('controleassistants').style.display = "block";
+                document.getElementById('controlepdg').style.display = "none";
+                document.getElementById('controledirect').style.display = "none";
+            }else{
+                document.getElementById('controledirect').style.display = "none";
+            }
+            /* structure = document.getElementById("struc").value;
+
             if(structure == "SERVICE")
             {
                 document.getElementById('controledirect').style.display = "block";
             }else{
                 document.getElementById('controledirect').style.display = "none";
-            }
+            } */
         }
     </script>
 

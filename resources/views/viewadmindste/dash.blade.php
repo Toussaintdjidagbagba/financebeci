@@ -3,7 +3,7 @@
 @section('css')
 
     <!-- Bootstrap Select Css -->
-    <link href="cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="public/cssdste/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
 @endsection
 
@@ -119,7 +119,6 @@
                     <div class="card">
                         <div class="header">
                             <h2>Budget général</h2>
-                            <button type="button" style="margin-right: 30px; margin-top: -20px; float: right; padding-right: 30px; padding-left: 30px;" class="btn bg-light-blue waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#add">Importer</button>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -138,16 +137,16 @@
                                 <table class="table table-hover dashboard-task-infos">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Lib. 1</th>
-                                            <th>Lib. 2</th>
-                                            <th>Lib. 3</th>
-                                            <th>Lib. 4</th>
+                                            <th>Mode</th>
+                                            <th>Budget</th>
+                                            <th>Réalisation</th>
+                                            <th>Taux</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
+                                            <td>Fonctionnement</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -156,7 +155,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>2</td>
+                                            <td>Social</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -165,7 +164,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>3</td>
+                                            <td>Dividende</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -174,16 +173,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>4</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
+                                            <td>Projet</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

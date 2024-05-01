@@ -9,7 +9,7 @@
     <script src="cssdste/js/pages/jquery.countTo.js"></script> 
 
     <script src="cssdste/js/pages/infobox-4.js"></script>
-@endsection
+@endsection 
 
 @section('content')
 
