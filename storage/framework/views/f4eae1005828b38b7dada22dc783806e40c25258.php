@@ -126,7 +126,7 @@
                                                     <div class="text-primary font-bold font-15">
                                                         Dévis
                                                     </div>
-                                                    <button type="button" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px; margin-bottom: -30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#add"><i class="material-icons"> note_add </i> </button>
+                                                    <button type="button" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px; margin-bottom: -30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#add"><i class="material-icons"> add </i> </button>
                                                     </h2>
                                                     </div>
 
@@ -222,9 +222,172 @@
                                                     Plan de trésorerie
                                                 </div>
 
+                                                <div class="row clearfix">
+                                                    <!-- Etat d'évolution du plan de trésorerie -->
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="">
+                                                            <div class="body">
+                                                                <div class="table-responsive" data-pattern="priority-columns">
+                                                                    <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th data-priority="1">Mois</th>
+                                                                            <th data-priority="1">Solde début</th>
+                                                                            <th data-priority="1">Janvier</th>
+                                                                            <th data-priority="1">Février</th>
+                                                                            <th data-priority="1">Mars</th>
+                                                                            <th data-priority="1">Avril</th>
+                                                                            <th data-priority="1">Mai</th>
+                                                                            <th data-priority="1">Juin</th>
+                                                                            <th data-priority="1">Juillet</th>
+                                                                            <th data-priority="1">Août</th>
+                                                                            <th data-priority="1">Septembre</th>
+                                                                            <th data-priority="1">Octobre</th>
+                                                                            <th data-priority="1">Novembre</th>
+                                                                            <th data-priority="6">Décembre</th>
+                                                                            <th data-priority="6">Total</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th data-priority="1">Total Encaissement</th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="6"></th>
+                                                                            <th data-priority="6"></th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th data-priority="1">Total Décaissement</th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="6"></th>
+                                                                            <th data-priority="6"></th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th data-priority="1">Différence</th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="6"></th>
+                                                                            <th data-priority="6"></th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th data-priority="1">Trésorerie nette</th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="1"></th>
+                                                                            <th data-priority="6"></th>
+                                                                            <th data-priority="6"></th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                    </table>
+                                                                </div> 
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                <!-- Encaissement -->
+                                                <div class="row clearfix">
+                                                    <div class="col-md-6">
+                                                        <div class="text-primary font-bold font-15">
+                                                            Encaissement
+                                                        </div>
+                                                        <button type="button" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px; margin-bottom: -30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#"><i class="material-icons"> add </i> </button>
+                                                        <div class="table-responsive" data-pattern="priority-columns">
+                                                            <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th data-priority="1">#</th>
+                                                                    <th data-priority="1">Désignation</th>
+                                                                    <th data-priority="1">Montant</th>
+                                                                    <th data-priority="1">Statut</th>
+                                                                    <th data-priority="1">Actions</th> 
+                                                                    <!-- Dans nous aurons : Visualiser, modifier et suppression 
+                                                                        
+                                                                    -->
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody id="listpdtencaissement">
+                                                                    <!-- -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                
+
+                                                <!-- Décaissement -->
+                                                    <div class="col-md-6">
+                                                        <div class="text-primary font-bold font-15">
+                                                            Décaissement
+                                                        </div>
+                                                        <button type="button" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px; margin-bottom: -30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#"><i class="material-icons"> add </i> </button>
+
+                                                        <div class="table-responsive" data-pattern="priority-columns">
+                                                            <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th data-priority="1">#</th>
+                                                                    <th data-priority="1">Désignation</th>
+                                                                    <th data-priority="1">Montant</th>
+                                                                    <th data-priority="1">Statut</th>
+                                                                    <th data-priority="1">Actions</th> 
+                                                                    <!-- Dans nous aurons : Visualiser, modifier et suppression 
+                                                                        NB : 
+                                                                            - Décaissement est générer depuis business plan et sera disponible déjà dans la liste pour édition du pair mois et valeur
+                                                                            - Prévoir Solde début comme mois dans la liste de mois
+                                                                            - Avec la possibilité d'ajouter d'autre encaissemnt  
+                                                                            - Le bouton suppression est disponible uniquement pour les ajouts manuel
+                                                                    -->
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody id="listpdtdecaissement">
+                                                                    <!-- -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                         
                                                         
-                                                        jhjhdfbnbnv
                                                         
 
                                             </div>

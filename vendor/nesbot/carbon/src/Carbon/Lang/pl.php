@@ -53,16 +53,10 @@ return [
     'a_second' => '{1}kilka sekund|:count sekunda|:count sekundy|:count sekund',
     's' => ':count sek.',
     'ago' => ':time temu',
-    'from_now' => static function ($time) {
-        return 'za '.strtr($time, [
-            'godzina' => 'godzinę',
-            'minuta' => 'minutę',
-            'sekunda' => 'sekundę',
-        ]);
-    },
+    'from_now' => 'za :time',
     'after' => ':time po',
     'before' => ':time przed',
-    'diff_now' => 'teraz',
+    'diff_now' => 'przed chwilą',
     'diff_today' => 'Dziś',
     'diff_today_regexp' => 'Dziś(?:\\s+o)?',
     'diff_yesterday' => 'wczoraj',

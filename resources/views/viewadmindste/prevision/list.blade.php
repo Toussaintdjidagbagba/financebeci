@@ -135,7 +135,7 @@
                                     <thead>
                                     <tr>
                                         <th data-priority="1">Année</th>
-                                        <th data-priority="1">Ligne budgétaire</th>
+                                        <th data-priority="1">Nature de dépense</th>
                                         <th data-priority="1">Sous compte</th>
                                         <th data-priority="1">Mois</th>
                                         <th data-priority="1">Solde début</th>
@@ -148,7 +148,7 @@
                                         @forelse($list as $serv)
                                         <tr>
                                             <td style="vertical-align:middle; text-align: center;">{{ $serv->annee }}</td>
-                                            <td style="vertical-align:middle; text-align: center;">{{ App\Providers\InterfaceServiceProvider::LibLigneBudgetaire($serv->lignebudgetaire) }}</td>
+                                            <td style="vertical-align:middle; text-align: center;">{{ App\Providers\InterfaceServiceProvider::LibLigneBudgetaire($serv->nature) }}</td>
                                             <td style="vertical-align:middle; text-align: center;">{{ App\Providers\InterfaceServiceProvider::LibSouscompte($serv->souscompte) }}</td>
                                             <td style="vertical-align:middle; text-align: center;">{{ $serv->mois }}</td>
                                             <td style="vertical-align:middle; text-align: center;">{{ number_format($serv->soldedebut, 0, '.', ' ')  }}</td> 

@@ -2,7 +2,6 @@
 
 namespace Illuminate\Database\Query;
 
-use BackedEnum;
 use Closure;
 use DateTimeInterface;
 use Illuminate\Contracts\Support\Arrayable;
@@ -201,15 +200,6 @@ class Builder
         'rlike', 'not rlike', 'regexp', 'not regexp',
         '~', '~*', '!~', '!~*', 'similar to',
         'not similar to', 'not ilike', '~~*', '!~~*',
-    ];
-
-    /**
-     * All of the available bitwise operators.
-     *
-     * @var string[]
-     */
-    public $bitwiseOperators = [
-        '&', '|', '^', '<<', '>>', '&~',
     ];
 
     /**
@@ -763,10 +753,6 @@ class Builder
             }
         }
 
-        if ($this->isBitwiseOperator($operator)) {
-            $type = 'Bitwise';
-        }
-
         // Now that we are working with just a simple query we can put the elements
         // in our array and add the query binding to our array of bindings that
         // will be bound to each SQL statements when it is finally executed.
@@ -846,20 +832,8 @@ class Builder
      */
     protected function invalidOperator($operator)
     {
-        return ! is_string($operator) || (! in_array(strtolower($operator), $this->operators, true) &&
-               ! in_array(strtolower($operator), $this->grammar->getOperators(), true));
-    }
-
-    /**
-     * Determine if the operator is a bitwise operator.
-     *
-     * @param  string  $operator
-     * @return bool
-     */
-    protected function isBitwiseOperator($operator)
-    {
-        return in_array(strtolower($operator), $this->bitwiseOperators, true) ||
-               in_array(strtolower($operator), $this->grammar->getBitwiseOperators(), true);
+        return ! in_array(strtolower($operator), $this->operators, true) &&
+               ! in_array(strtolower($operator), $this->grammar->getOperators(), true);
     }
 
     /**
@@ -1267,7 +1241,7 @@ class Builder
     /**
      * Add a "where date" statement to the query.
      *
-     * @param  \Illuminate\Database\Query\Expression|string  $column
+     * @param  string  $column
      * @param  string  $operator
      * @param  \DateTimeInterface|string|null  $value
      * @param  string  $boolean
@@ -1847,39 +1821,6 @@ class Builder
     }
 
     /**
-     * Add a "where fulltext" clause to the query.
-     *
-     * @param  string|string[]  $columns
-     * @param  string  $value
-     * @param  string  $boolean
-     * @return $this
-     */
-    public function whereFullText($columns, $value, array $options = [], $boolean = 'and')
-    {
-        $type = 'Fulltext';
-
-        $columns = (array) $columns;
-
-        $this->wheres[] = compact('type', 'columns', 'value', 'options', 'boolean');
-
-        $this->addBinding($value);
-
-        return $this;
-    }
-
-    /**
-     * Add a "or where fulltext" clause to the query.
-     *
-     * @param  string|string[]  $columns
-     * @param  string  $value
-     * @return $this
-     */
-    public function orWhereFullText($columns, $value, array $options = [])
-    {
-        return $this->whereFulltext($columns, $value, $options, 'or');
-    }
-
-    /**
      * Add a "group by" clause to the query.
      *
      * @param  array|string  ...$groups
@@ -1938,10 +1879,6 @@ class Builder
         // we will set the operators to '=' and set the values appropriately.
         if ($this->invalidOperator($operator)) {
             [$value, $operator] = [$operator, '='];
-        }
-
-        if ($this->isBitwiseOperator($operator)) {
-            $type = 'Bitwise';
         }
 
         $this->havings[] = compact('type', 'column', 'operator', 'value', 'boolean');
@@ -2164,7 +2101,7 @@ class Builder
         $property = $this->unions ? 'unionLimit' : 'limit';
 
         if ($value >= 0) {
-            $this->$property = ! is_null($value) ? (int) $value : null;
+            $this->$property = $value;
         }
 
         return $this;
@@ -2487,15 +2424,15 @@ class Builder
     {
         $this->enforceOrderBy();
 
-        return collect($this->orders ?? $this->unionOrders ?? [])->filter(function ($order) {
-            return Arr::has($order, 'direction');
-        })->when($shouldReverse, function (Collection $orders) {
-            return $orders->map(function ($order) {
+        if ($shouldReverse) {
+            $this->orders = collect($this->orders)->map(function ($order) {
                 $order['direction'] = $order['direction'] === 'asc' ? 'desc' : 'asc';
 
                 return $order;
-            });
-        })->values();
+            })->toArray();
+        }
+
+        return collect($this->orders);
     }
 
     /**
@@ -3321,30 +3258,12 @@ class Builder
         }
 
         if (is_array($value)) {
-            $this->bindings[$type] = array_values(array_map(
-                [$this, 'castBinding'],
-                array_merge($this->bindings[$type], $value),
-            ));
+            $this->bindings[$type] = array_values(array_merge($this->bindings[$type], $value));
         } else {
-            $this->bindings[$type][] = $this->castBinding($value);
+            $this->bindings[$type][] = $value;
         }
 
         return $this;
-    }
-
-    /**
-     * Cast the given binding value.
-     *
-     * @param  mixed  $value
-     * @return mixed
-     */
-    public function castBinding($value)
-    {
-        if (function_exists('enum_exists') && $value instanceof BackedEnum) {
-            return $value->value;
-        }
-
-        return $value;
     }
 
     /**
@@ -3368,13 +3287,9 @@ class Builder
      */
     public function cleanBindings(array $bindings)
     {
-        return collect($bindings)
-                    ->reject(function ($binding) {
-                        return $binding instanceof Expression;
-                    })
-                    ->map([$this, 'castBinding'])
-                    ->values()
-                    ->all();
+        return array_values(array_filter($bindings, function ($binding) {
+            return ! $binding instanceof Expression;
+        }));
     }
 
     /**

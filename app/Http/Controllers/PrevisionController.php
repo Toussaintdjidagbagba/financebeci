@@ -20,7 +20,7 @@ class PrevisionController extends Controller
 
 		//if (in_array("add_personnel", session("auto_action"))) {
         //    return view("vendor.error.649");
-        // }else{
+        // }else{ 
 
 			if ( $request->ptgtypeptg == "ENCAISSEMENT" &&
 				isset(Prevision::where('type', $request->ptgtypeptg)->where('annee', $request->ptgan)->where("lignebudgetaire", $request->pfglb)->first()->id)

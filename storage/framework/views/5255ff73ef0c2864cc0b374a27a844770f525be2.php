@@ -91,6 +91,7 @@
                                         <th data-priority="1">Date Fin </th>
                                         <th data-priority="1">Client </th>
                                         <th data-priority="1">Montant TTC </th>
+                                        <th data-priority="1">Statut </th>
                                         <th data-priority="6">Actions</th>
                                     </tr>
                                     </thead>
@@ -104,7 +105,8 @@
                                             <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->datedebut); ?></td>
                                             <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->datefin); ?></td>
                                             <td style="vertical-align:middle; text-align: center;"><?php echo e(App\Providers\InterfaceServiceProvider::libelleClient($serv->client)); ?></td>
-                                            <td style="vertical-align:middle; text-align: center;"><?php echo e(number_format($serv->montantttc, 0, '.', ' ')); ?></td> 
+                                            <td style="vertical-align:middle; text-align: center;"><?php echo e(number_format($serv->montantttc, 0, '.', ' ')); ?></td>
+                                            <td style="vertical-align:middle; text-align: center;">  </td> 
                                             <td style="vertical-align:middle; text-align: center;">
 
                                             <?php if($serv->client == "" || $serv->client == null || $serv->client == 0): ?>
@@ -116,6 +118,10 @@
                                                      <i class="material-icons">group</i>
                                             </button>
                                             <?php endif; ?>
+
+                                            <button onclick="getvalidactor(<?php echo e($serv); ?>)" type="button" title="Validation" data-toggle="modal" data-target="#acteur" class="btn btn-circle btn-xs margin-bottom-10 ">
+                                                     <i class="material-icons">playlist_add_check</i>
+                                            </button>
 
                                             <a href="<?php echo e(route('GDFP', $serv->titre)); ?>"> 
                                             <button type="button" title="Fiche de projet" class="btn btn-circle btn-xs margin-bottom-10 ">
