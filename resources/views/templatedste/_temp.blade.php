@@ -30,7 +30,7 @@
 
 </head>
 
-<body class="theme-red" style="background-image: url(public/fond.png); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
+<body class="theme-red" style="background-image: url(public/fondapp.png); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
 -moz-background-size: cover; background-attachment: fixed;
 -o-background-size: cover;">
     <!-- Page Loader -->
@@ -270,6 +270,9 @@
                                 <a href="{{route('GLUTE')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>
                                     Liste des Unités
                                 </span></a>
+                            </li>
+                            <li>
+                                <a href="{{route('GPBC')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Part BECI</span></a>
                             </li>
                             <li>
                                 <a href="{{route('GOU')}}"><i class="large material-icons" style="color:#001e60">assessment</i><span>Organigramme</span></a>

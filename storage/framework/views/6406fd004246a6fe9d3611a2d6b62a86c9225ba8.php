@@ -27,7 +27,7 @@
     
 </head>
 
-<body class="login-page" style="background-image : url('public/photo.png'); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
+<body class="login-page" style="background-image : url('public/splashscreen.png'); background-repeat: no-repeat; background-size: cover; -webkit-background-size: cover;
 -moz-background-size: cover; background-attachment: fixed; 
 -o-background-size: cover;">
     <center style="border-radius: 10px; margin-left: 50%; z-index: 1; left: 50%;top: 75%; transform: translate(-50%, 15%); width: 360px;"> <?php echo $__env->make('flash::message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?></center> 

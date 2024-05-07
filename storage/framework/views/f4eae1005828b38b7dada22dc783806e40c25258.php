@@ -126,55 +126,29 @@
                                                     <div class="text-primary font-bold font-15">
                                                         Dévis
                                                     </div>
-                                                    <button type="button" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px; margin-bottom: -30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#add"><i class="material-icons"> add </i> </button>
+                                                    <button type="button" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px; margin-bottom: -30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#addDevi"><i class="material-icons"> note_add </i> </button>
                                                     </h2>
                                                     </div>
 
                                                 <div class="body"> 
-                                                <div class="table-responsive" data-pattern="priority-columns">
-                                                    <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th data-priority="1">#</th>
-                                                            <th data-priority="1">Désignation</th>
-                                                            <th data-priority="1">Unité</th>
-                                                            <th data-priority="1">Quantité</th>
-                                                            <th data-priority="1">Prix Unitaire</th>
-                                                            <th data-priority="1">Montant</th>
-                                                            <th data-priority="6">Actions</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="listdevis">
-                                                            <?php $__empty_1 = true; $__currentLoopData = $listdevis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $serv): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                                    <div class="table-responsive" data-pattern="priority-columns">
+                                                        <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+                                                            <thead>
                                                             <tr>
-                                                                <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->id); ?></td>
-                                                                <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->designation); ?></td>
-                                                                <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->unite); ?></td>
-                                                                <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->quantite); ?></td>
-                                                                <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->unitaire); ?></td>
-                                                                <td style="vertical-align:middle; text-align: center;"><?php echo e($serv->quantite * $serv->unitaire); ?></td>
-                                                                <td style="vertical-align:middle; text-align: center;">
-                                                                    <?php if(in_array("update_service", session("auto_action"))): ?>
-                                                                    <button onclick="getupdate(<?php echo e($serv); ?>, '<?php echo e($serv->designation); ?>')" type="button" title="Modifier" data-toggle="modal" data-target="#update" class="btn btn-primary btn-circle btn-xs  margin-bottom-10 waves-effect waves-light">
-                                                                         <i class="material-icons">system_update_alt</i> 
-                                                                    </button>
-                                                                    <?php endif; ?>
-
-                                                                    <?php if(in_array("delete_service", session("auto_action"))): ?>
-                                                                    <button onclick="getdelete(<?php echo e($serv); ?>)"type="button" title="Supprimer" data-toggle="modal" data-target="#delete" class="btn btn-danger btn-circle btn-xs  margin-bottom-10 waves-effect waves-light"><i class="material-icons">delete_sweep</i> 
-                                                                    </button>
-                                                                    <?php endif; ?>
-
-                                                                </td>
+                                                                <th data-priority="1">#</th>
+                                                                <th data-priority="1">Désignation</th>
+                                                                <th data-priority="1">Unité</th>
+                                                                <th data-priority="1">Quantité</th>
+                                                                <th data-priority="1">Prix Unitaire</th>
+                                                                <th data-priority="1">Montant</th>
+                                                                <th data-priority="6">Actions</th>
                                                             </tr>
-                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                                            <tr>
-                                                                <td colspan="7"><center>Pas de ligne devis enregistrer!!!</center> </td>
-                                                            </tr>
-                                                            <?php endif; ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>         
+                                                            </thead>
+                                                            <tbody id="contenudevis">
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>         
                                                 </div>
                                             </div>
                                         </div>
@@ -184,15 +158,35 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="card-body m-l-25">
+                                                <div class="header">
+                                                    <h2>
                                                 <div class="text-primary font-bold font-15">
-                                                    Bussness plan
+                                                    Bussiness Plan
+                                                </div>
+                                                <button type="button" onclick="getIdBplan(<?php echo e($info); ?>)" title="Ajouter" style="margin-right: 30px; float: right; padding-right: 30px; padding-left: 30px; margin-bottom: -30px;" class="btn bg-deep-orange waves-effect" data-color="deep-orange" data-toggle="modal" data-target="#addBplan"><i class="material-icons"> note_add </i> </button>
+                                                </h2>
                                                 </div>
 
-                                                        
-                                                        
-                                                        jhjhdfbnbnv
-                                                        
+                                                <div class="body"> 
+                                                    <div class="table-responsive" data-pattern="priority-columns">
+                                                        <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+                                                            <thead>
+                                                            <tr>
+                                                                <th data-priority="1">#</th>
+                                                                <th data-priority="1">Désignation</th>
+                                                                <th data-priority="1">Unité</th>
+                                                                <th data-priority="1">Quantité</th>
+                                                                <th data-priority="1">Prix Unitaire</th>
+                                                                <th data-priority="1">Montant</th>
+                                                                <th data-priority="6">Actions</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="contenubplan">
 
+                                                            </tbody>
+                                                        </table>
+                                                    </div>         
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -418,78 +412,242 @@
             </div>
         </div>
 
-        <script type="text/javascript">
-
-            function getlistdevis() {
-                // Affichage des devis
-            }
-           
-        </script>
-
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection("model"); ?>
-    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Enregistrer un dévis : </h4>
-            </div>
-            <form method="post" action="<?php echo e(route('AS')); ?>">
-            <div class="modal-body">
-                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
-                    <div class="row clearfix">
-                        <div class="col-md-6">
-                            <label for="lib">Désignation : </label>
-                           <div class="form-group">
-                            <div class="form-line">
-                                <input type="number" id="lib" name="lib" class="form-control" placeholder="">
-                            </div>
-                           </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <label for="lib">Quantité : </label>
-                           <div class="form-group">
-                            <div class="form-line">
-                                <input type="text" id="lib" name="lib" class="form-control" placeholder="">
-                            </div>
-                           </div>
+
+
+    <div class="modal fade" id="addDevi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div id="infodevis"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Enregistrer un dévis : </h4>
+                </div>
+                <div class="modal-body">
+                <input type="hidden" id="_token" name="_token" value="<?php echo e(csrf_token()); ?>" />
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <label for="designation">Désignation : </label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="designation" name="designation" class="form-control" placeholder="">
                         </div>
                     </div>
-                    <div class="row clearfix">
-                            <div class="col-md-6">
-                                <label for="sexe">Unité</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <select type="text" id="sexe" name="sexe" class="form-control show-tick" placeholder="">
-                                            <option value="F">Fonctionnement</option>
-                                            <option value="M">Social</option>
-                                            <option value="M">Investissement</option> 
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="lib">Prix unitaire : </label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="number" id="lib" name="lib" class="form-control" placeholder="">
-                                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="qte">Quantité : </label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="qte" name="qte" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                        <div class="col-md-6">
+                            <label for="unite">Unité</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <select type="text" id="unite" name="unite" class="form-control show-tick" placeholder="">
+                                        <?php 
+                                            $unites = App\Providers\InterfaceServiceProvider::allunites();
+                                        ?> 
+                                            <option value="">Sémectionner une unités</option>
+                                        <?php $__currentLoopData = $unites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $unite): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($unite->id); ?>"><?php echo e($unite->libelle); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                    
+                        <div class="col-md-6">
+                            <label for="p_u">Prix unitaire : </label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="number" id="p_u" name="p_u" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">FERMER</button>
+                    <button onclick="addDevisProjet()" class="btn bg-deep-orange waves-effect">AJOUTER</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">FERMER</button>
-                <button type="submit" class="btn bg-deep-orange waves-effect">AJOUTER</button>
-            </div>
-            </form>
         </div>
     </div>
+    
+    <div class="modal fade" id="updateDevi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div id="infodevis_u"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Enregistrer un dévis : </h4>
+                </div>
+                <div class="modal-body">
+                <input type="hidden" id="_token_u" name="_token_u" value="<?php echo e(csrf_token()); ?>" />
+                
+                <input type="hidden" id="projetID_u"/>
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <label for="designation_u">Désignation : </label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="designation_u" name="designation_u" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="update_u"/>
+
+                    <div class="col-md-6">
+                        <label for="qte_u">Quantité : </label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" id="qte_u" name="qte_u" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                        <div class="col-md-6">
+                            <label for="unite_u">Unité</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <select type="text" id="unite_u" name="unite_u" class="form-control show-tick" placeholder="">
+                                        <?php 
+                                            $unites = App\Providers\InterfaceServiceProvider::allunites();
+                                        ?> 
+                                            <option value="">Sémectionner une unités</option>
+                                        <?php $__currentLoopData = $unites; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $unite): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($unite->id); ?>"><?php echo e($unite->libelle); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="p_u_ud">Prix unitaire : </label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="number" id="p_u_ud" name="p_u_ud" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">FERMER</button>
+                    <button onclick="updateDevisProjet()" class="btn bg-deep-orange waves-effect">AJOUTER</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Suppression d'une ligne : </h4>
+                </div>
+                <div class="modal-body">
+                        <input type="hidden" id="_tokendelete" name="_tokendelete" value="<?php echo e(csrf_token()); ?>" />
+                        <input type="hidden" id="_designation" name="_designation" />
+                        <div class="row clearfix">
+                            <input type="hidden" id="_iddelete" name="_iddelete" class="form-control" placeholder="">
+                            <label id="infodelete"></label>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm waves-effect waves-light" data-dismiss="modal">FERMER</button>
+                    <button onclick="validedelete()" id="modif" class="btn bg-deep-orange waves-effect">SUPPRIMER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+        const id = "<?php echo e($info->id); ?>";
+        const urlbplan = "<?php echo e(route('GBPP', ['id' => "+id+" ])); ?>";
+
+        getlistDevis();
+
+            // Recuperation et affichage des devis
+            async function getlistDevis() {
+                try {
+                    let response = await fetch("<?php echo e(route('GDP')); ?>?id="+id,
+                    {
+                        method: 'get',
+                        headers: {
+                            'Access-Control-Allow-Credentials': true,
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                        },
+                    }); 
+
+                    
+
+                    if (response.status == 200) {
+
+                        // Récupérer les données JSON de la réponse
+                        data = await response.text();
+
+                        //console.log(await response.text());
+
+                        reponse = JSON.parse(data);
+
+                        devisList = reponse.devis;
+
+                        let rowsHTML = '';
+
+                        let i = 1;
+
+                        devisList.forEach(devis => {
+                            let newRow = '<tr>';
+                            newRow += '<td>' + i + '</td>';
+                            newRow += '<td>' + devis.designation + '</td>';
+                            newRow += '<td>' + devis.unite + '</td>';
+                            newRow += '<td>' + devis.quantite + '</td>';
+                            newRow += '<td>' + devis.pu + '</td>';
+                            newRow += '<td>' + (devis.quantite * devis.pu) + '</td>';
+                            newRow += '<td>';
+                            newRow += `<?php if(in_array("update_service", session("auto_action"))): ?><button data-values='["${devis.id}","${devis.designation}","${devis.unite}", "${devis.quantite}", "${devis.pu}","${devis.projet}"]' onclick="getupdate(this)" type="button" title="Modifier" data-toggle="modal" data-target="#updateDevi" class="btn btn-primary btn-circle btn-xs margin-bottom-10 waves-effect waves-light"><i class="material-icons">system_update_alt</i> </button><?php endif; ?>`;
+                            newRow += `<?php if(in_array("delete_service", session("auto_action"))): ?><button onclick="getdelete(${(devis.id)}, ${(devis.projet)})" type="button" title="Supprimer" data-toggle="modal" data-target="#delete" class="btn btn-danger btn-circle btn-xs margin-bottom-10 waves-effect waves-light"><i class="material-icons">delete_sweep</i></button><?php endif; ?>`;
+                            newRow += '</td>';
+                            newRow += '</tr>';
+                            i++;
+                            rowsHTML += newRow;
+                        });
+                        if(rowsHTML == ""){
+                            document.getElementById('contenudevis').innerHTML = '<tr> <td colspan="7"><center> Aucune devis enregistré pour ce projet. </center> </td> </tr>';
+                        }else{
+                            document.getElementById('contenudevis').innerHTML = rowsHTML;
+                        }
+                        
+                    }else{
+                        return "";
+                    }
+                } catch (error) {
+                    return "";
+                }
+            }
+
+
+    </script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('templatedste._temp', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\financebeci\resources\views/viewadmindste/projet/detailprojet.blade.php ENDPATH**/ ?>

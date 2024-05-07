@@ -84,7 +84,7 @@ Route::group([
 	Route::get('/budgetsuiviplantresorerie', 'App\Http\Controllers\GestionnaireController@getbudgetsuiviplantresorerie')->name('GBSPT');
 
 	Route::get('/ficheprojet', 'App\Http\Controllers\GestionnaireController@getficheprojet')->name('GFP');
-	Route::get('/detailprojet', 'App\Http\Controllers\GestionnaireController@getplanificationprojet')->name('GDP');
+	//Route::get('/detailprojet', 'App\Http\Controllers\GestionnaireController@getplanificationprojet')->name('GDP');
 
 	Route::get('/caisse', 'App\Http\Controllers\GestionnaireController@getcaisse')->name('GC');
 	Route::get('/caissee', 'App\Http\Controllers\GestionnaireController@getcaisse')->name('GE');
@@ -157,6 +157,12 @@ Route::group([
 	Route::post('/addprojet', 'App\Http\Controllers\ProjetController@setAddProjet')->name('SAP');
 	Route::post('/addacteurprojet', 'App\Http\Controllers\ProjetController@setAddActorProjet')->name('SAAP');
 	Route::get('/ficheprojet-{titre}', 'App\Http\Controllers\ProjetController@getficheprojet')->name('GDFP');
+	Route::get('/devisprojet', 'App\Http\Controllers\ProjetController@getdevisprojet')->name('GDP');
+	Route::post('/adddevisprojet', 'App\Http\Controllers\ProjetController@adddevisprojet')->name('ADDDP');
+	Route::post('/deletedevisprojet', 'App\Http\Controllers\ProjetController@setdelete')->name('DDP');
+
+
+
 
 	//////////////////////////////////** Type de prestation **//////////////////////////////////////////////////////////////////////
 	Route::get('/listtypeprestation', 'App\Http\Controllers\TypeprestationController@listtypesprestation')->name('GTP');
@@ -177,6 +183,11 @@ Route::group([
 	Route::post('/add-banque', 'App\Http\Controllers\BanqueController@setbanque')->name('AB');
 	Route::post('/delete-banque', 'App\Http\Controllers\BanqueController@deletebanque')->name('DB');
 
+	//////////////////////////////////** Part BECI **////////////////////////////////////////////////
+	Route::get('/part-beci', 'App\Http\Controllers\PartBeciController@getpartbeci')->name('GPBC');
+	Route::post('/addmode-valeur', 'App\Http\Controllers\PartBeciController@setAddModeValeur')->name('ADMV');
+	Route::post('/deletemode-valeur', 'App\Http\Controllers\PartBeciController@setdelete')->name('DDMV');
+
 	//////////////////////////////////** Partenaire **////////////////////////////////////////////////
 	Route::get('/partenaire', 'App\Http\Controllers\PartenaireController@getpartenaire')->name('GPTN');
 	Route::post('/addpartenaire', 'App\Http\Controllers\PartenaireController@setpartenaire')->name('APTN');
@@ -194,6 +205,11 @@ Route::group([
 	Route::get('/fichecompte{id}', 'App\Http\Controllers\CompteController@getdetailcompte')->name('GDSC');
 
 	Route::get('/creance', 'App\Http\Controllers\GestionnaireController@getcreance')->name('GCA');
+
+
+	//////////////////////////////////** Devis Projet **///////////////////////////////////////////////////////////////////
+	Route::get('/bp-{id}', 'App\Http\Controllers\DevisController@getdevisprojet')->name('GBPP');
+	
 
 });
 

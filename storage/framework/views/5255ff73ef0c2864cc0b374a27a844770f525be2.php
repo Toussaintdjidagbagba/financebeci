@@ -119,7 +119,7 @@
                                             </button>
                                             <?php endif; ?>
 
-                                            <button onclick="getvalidactor(<?php echo e($serv); ?>)" type="button" title="Validation" data-toggle="modal" data-target="#acteur" class="btn btn-circle btn-xs margin-bottom-10 ">
+                                            <button onclick="getvalidactor(<?php echo e($serv); ?>)" type="button" title="Validation" data-toggle="modal" data-target="#" class="btn btn-circle btn-xs margin-bottom-10 ">
                                                      <i class="material-icons">playlist_add_check</i>
                                             </button>
 
@@ -164,12 +164,10 @@
                                         <?php endif; ?>
                                     </tbody>
                                 </table>
-                            </div> 
-                            
+                            </div>       
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
 

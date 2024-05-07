@@ -1,0 +1,6 @@
+//////////////////////////////////** Devis Projet **///////////////////////////////////////////////////////////////////
+	Route::get('/devisprojet-{id}', 'App\Http\Controllers\DevisController@getdevisprojet')->name('GDP');
+	Route::post('/adddevisprojet}', 'App\Http\Controllers\DevisController@adddevisprojet')->name('ADDDP');
+	Route::post('/deletedevisprojet}', 'App\Http\Controllers\DevisController@setdelete')->name('DDP');
+	
+

@@ -24,6 +24,11 @@ class InterfaceServiceProvider extends ServiceProvider
         return 0;
     }
 
+    public static function allunites()
+    {
+        return DB::table('unites')->get();
+    }
+
     public static function getlg($id){
         $lb = DB::table('naturedepenses')->where('id', $id)->first();
         return $lb;
